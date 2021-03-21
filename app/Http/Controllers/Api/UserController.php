@@ -172,6 +172,71 @@ class UserController extends Controller
         }
     }
 
+
+     /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function socialMediaLogin(Request $request){
+        $responseData = array();
+        $responseData['status'] = 0;
+        $responseData['message'] = '';
+        $responseData['data'] = (object) [];
+
+        try {
+            $validator = Validator::make($request->all(), [
+                'social' => 'required',
+                'provider_id' => 'required',
+                'device_type' => ['required', 'string'],
+                'device_id' => ['required', 'string'],
+                'device_name' => ['required', 'string'],
+            ]);
+            if ($validator->fails()) {
+                $responseData['message'] = $validator->errors()->first();
+                return $this->commonResponse($responseData, 200);
+            } else{
+                $provider_id = $request->input('provider_id');
+
+                $social = $request->input('social');
+
+                $user = User::where(['email' => $request->input('email'),'deleted_at' => null])->orWhere(['provider_id' => $provider_id])->first();
+
+                if(is_null($user)){
+                    $email = $request->input('email');
+                    $username = $request->input('username');
+
+                    DB::beginTransaction();
+                    $user = new User();
+                    $user->username = $username;
+                    $user->email       = $email;
+                    $user->password    = Hash::make(Str::random(8));
+                    $user->logo    = null;
+                    $user->provider_name = $social;
+                    $user->provider_id = $provider_id;
+                    $user->ip_address = \Request::ip();
+                    $user->save();
+                    
+                    DB::commit();
+
+                    return $this->userLoginSuccessResponse($user, $request);
+                } else {
+                    DB::beginTransaction();
+                    $user->forceFill([
+                        'updated_at' => now(),
+                    ])->save();
+                    DB::commit();
+                    return $this->userLoginSuccessResponse($user, $request);
+                }
+            }
+        } catch (Exception $e){
+            DB::rollback();
+            Log::emergency('Login with social site catch exception:: Message:: '.$e->getMessage().' line:: '.$e->getLine().' Code:: '.$e->getCode().' file:: '.$e->getFile());
+            $code = ($e->getCode() != '')?$e->getCode():500;
+            $responseData['message'] = trans('common.something_went_wrong');
+            return $this->commonResponse($responseData, $code);
+        }
+    }
+
      /*
      * After login success response to user
      *

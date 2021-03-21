@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('status')->default(1)->comment('1:active, 0:inactive');
             $table->tinyInteger('gender')->default(1)->comment('1:male, 2:female');
             $table->string('ip_address', 15)->nullable();
+            $table->string('provider_id')->nullable();
+            $table->string('provider_name')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

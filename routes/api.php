@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('/register', 'Api\UserController@register');
 Route::post('/login', 'Api\UserController@login');
+Route::post('/socialMediaLogin', 'Api\UserController@socialMediaLogin');
 Route::get('/test' , function (){
     return "API is working";
 });

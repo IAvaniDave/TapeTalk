@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Models\ChatGroup;
 use App\Models\ChatMember;
+use App\Models\ChatMessage;
 use App\Models\MessageReceivers;
 use DB;
 use Validator;
@@ -15,10 +16,9 @@ class ChatController extends Controller
 {
     /**
      * This function is used for send message functionality
-     * params required: token ==> for authentication
+     * params required: token => for authentication
      * params optional : group_id / new_user_id ==> group id if aready group is there and new_user_id if group is    not there but need to create group
     */
-
     public function sendMessge(Request $request){
         $responseData = array();
         $responseData['status'] = 0;
@@ -55,18 +55,61 @@ class ChatController extends Controller
             }
 
             // to check sender is sending message to himself
-            if($groupId == null && $request->new_user_id == $currentUser->id){ 
+            if($request->new_user_id == $currentUser->id ){ 
                 $responseData['status'] = 200;
                 $responseData['message'] = 'You can\'t send a message to yourself.';
                 DB::rollback();
                 return $this->commonResponse($responseData, 200);
             }
+
             $chatGroupId = null;
-            if(empty($groupId)){
+            $newGroup = 0;
+            $allReceivers = [];
+            $members_array = array(); 
+            $members_array[] = $request->new_user_id; 
+            $members_array[] = $currentUser->id; 
 
+            $isGroup = $this->getGroupId($members_array);
+            
+            if(empty($groupId) && empty($isGroup)){
+                $is_single = 1;
 
+                $group = ChatGroup::firstOrCreate(['id' => (int)$request->group_id],['is_single' => $is_single, 'created_by' => $currentUser->id ,'group_name' => 'NULL', 'group_image' => 'NULL']);
+
+                $createMembers = [];
+                $createReceivers = [];
+                // dd($members_array);
+                foreach($members_array as $member){
+                    $createMembers[] = [
+                        'user_id' => (int)$member,
+                        'group_id' => $group->id,
+                        'created_at' => date('Y-m-d H:i:s'),
+                    ];
+                    
+                    $createReceivers[] = [
+                        'receiver_id' => (int)$member,
+                        'group_id' => $group->id,
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'is_read' => 0,
+                    ];
+
+                    $allReceivers = [$member];
+                }
+                
+                if(!empty($createMembers)){
+                    ChatMember::insert($createMembers);
+                }
+                // if(!empty($createReceivers)){
+                //     MessageReceivers::insert($createReceivers);
+                // }
+                
+                $chatGroupId = $group->id;
+                $newGroup = 1;
+                // DB::commit();
             } else {
+                
                 $chatGroup = ChatGroup::where('id', $groupId)->first();
+
                 if(!isset($chatGroup) && empty($chatGroup)){
                     $responseData['status'] = 404;
                     $responseData['message'] = 'Group is not found. Please check your group id';
@@ -74,15 +117,13 @@ class ChatController extends Controller
                     return $this->commonResponse($responseData, 404);
                 }
                 $chatGroupId = $chatGroup->id;
-                // $total_members = MessageReceivers::
-                // $chatMembers = 
+                $newGroup = 0;
             }
 
             if($chatGroupId != null){
                 $total_members = ChatMember::where('group_id',$chatGroupId)->with('user:id,username,email,deleted_at')->whereHas('user',function($query){
                     $query->where('deleted_at', null)->where('status',1);
                 })->get();
-
 
                 if($total_members->count() == 2){
                     $is_single = 1;
@@ -93,8 +134,35 @@ class ChatController extends Controller
                     $responseData['message'] = 'Please add members to the group';
                     DB::rollback();
                     return $this->commonResponse($responseData, 404);
-                    
                 }
+
+                $message = $request->message;
+
+                $messages = ChatMessage::create([
+                    'sender_id' => $currentUser->id,
+                    'text' => $message,
+                    'group_id' => $chatGroupId,
+                    'is_forwarded' => 0,
+                ]);
+                
+                $allReceivers = $total_members->pluck('user_id');
+                
+                $messageReceiversData = [];
+                if($allReceivers != null){
+                    foreach ($allReceivers as $receiver) {
+                        $messageReceiversData[] = ['receiver_id' => $receiver, 'group_id' => $chatGroupId, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s'),'is_read' => 0, 'message_id' => $messages->id ];
+                    }
+                    MessageReceivers::insert($messageReceiversData);
+                }
+                DB::commit();
+                $responseData['status'] = 200;
+                $responseData['message'] = 'Message sent successfully';
+                return $this->commonResponse($responseData, 200);
+            } else {
+                DB::rollback();
+                $responseData['status'] = 500;
+                $responseData['message'] = 'Something went wrong...GroupId not found';
+                return $this->commonResponse($responseData, 200);
             }
 
         } catch (\Exception $e) {
@@ -103,11 +171,29 @@ class ChatController extends Controller
             $catchError .= 'Error file: '.$e->getFile().PHP_EOL;
             $catchError .= 'Error line: '.$e->getLine().PHP_EOL;
             $catchError .= 'Error message: '.$e->getMessage().PHP_EOL;
-            Log::emergency($catchError);
+            \Log::emergency($catchError);
 
-            $code = ($e->getCode() != '')?$e->getCode():500;
             $responseData['message'] = "Something went wrong";
-            return $this->commonResponse($responseData, $code);
+            return $this->commonResponse($responseData, 500);
         }
+    }
+
+    public function getGroupId($members_array){
+        $Query = DB::table('chat_members as main')->select('group_id');
+            foreach ($members_array as $key => $single) {
+                $Query->whereIn('main.group_id', function($query) use($single){
+                    $query->select('group_id')->from('chat_members')->where('user_id',$single);
+                });
+            }
+            $Query->whereIn('user_id',$members_array)->groupBy('group_id')
+            ->having(DB::raw('COUNT(main.user_id)'),"=", DB::raw('(select count(user_id) FROM chat_members AS counter_chat WHERE counter_chat.group_id = main.group_id)'));
+            $isGroup = $Query->first();
+            $alreadyGroup = $Query->first();
+
+        $groupId = "";
+        if(!empty($alreadyGroup)){
+            $groupId = $alreadyGroup->group_id;
+        }
+        return $groupId;
     }
 }

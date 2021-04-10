@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class MessageReceivers extends Model
 {
+    protected $table = "message_receivers";
+
     protected $guarded = [];
 
     public function user(){

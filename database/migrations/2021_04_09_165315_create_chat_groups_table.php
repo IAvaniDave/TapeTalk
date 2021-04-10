@@ -15,7 +15,7 @@ class CreateChatGroupsTable extends Migration
     {
         Schema::create('chat_groups', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('group_name');
+            $table->string('group_name')->nullable()->default(NULL);
             $table->string('group_image')->nullable()->default(NULL);
             $table->bigInteger('is_single')->comment('1 - not a group and 2 - group');
             $table->bigInteger('created_by')->nullable()->default(NULL);

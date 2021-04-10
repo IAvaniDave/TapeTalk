@@ -153,7 +153,6 @@ class GeneralController extends Controller
      * This function is used for add group api
      */
     public function addGroup(Request $request){
-        // dd("bhvhj");
         $responseData = array();
         $responseData['status'] = 0;
         $responseData['message'] = '';
@@ -173,53 +172,71 @@ class GeneralController extends Controller
                 if(isset($request->members)){
                     // check whether same members are not there in array
                     $isUnique = array_unique($request->members);
-                    // check count 
-                    if(count($isUnique) > 2){
-                        $flag = true;
-                        foreach ($isUnique as $userData){
-                            $userExists = User::where('id',$userData)->exists();
-                            if(!$userExists){
-                                $flag = false;
-                            }
+                    $flag = true;
+                    foreach ($isUnique as $userData){
+                        $userExists = User::where('id',$userData)->exists();
+                        if(!$userExists){
+                            $flag = false;
                         }
-                        // all user details exists
-                        if($flag){
-                            $flagExists = false;
-                            // check Group Exists with same name
-                            $checkGroupExists = ChatGroup::where(['group_name' => $request->group_name,'deleted_at' => null,'created_by' => $currentUser->id])->first();
-                            if(empty($checkGroupExists)){
-                                $flagExists = false;
+                    }
+                    // all user details exists
+                    if($flag){
+                        // check if group is new
+                        if($request->is_existing == 0){
+                            if(!(count($isUnique) > 2)){
+                                DB::rollback();
+                                $responseData['message'] = "Members Count must be greater than 2";
+                                $responseData['status'] = 400;
+                                return $this->commonResponse($responseData, 200);
                             } else {
-                                // check same mebers are there or different members
-                                $checkMembers = ChatMember::where('group_id',$checkGroupExists->id)->where('is_left',0)->where('deleted_at',null)->get();
-                                if(isset($checkMembers) && empty($checkMembers)){
+                            
+                                $flagExists = false;
+                                // check Group Exists with same name
+                                $checkGroupExists = ChatGroup::where(['group_name' => $request->group_name,'deleted_at' => null,'created_by' => $currentUser->id])->first();
+                                if(empty($checkGroupExists)){
                                     $flagExists = false;
                                 } else {
-                                    $userArray = $checkMembers->pluck('user_id');
-                                    dd($userArray);
+                                    // check same mebers are there or different members
+                                    $checkMembers = ChatMember::where('group_id',$checkGroupExists->id)->where('is_left',0)->where('deleted_at',null)->get();
+                                    if(isset($checkMembers) && empty($checkMembers)){
+                                        $flagExists = false;
+                                    } else {
+                                        $userArray = $checkMembers->pluck('user_id')->toArray();
+                                        $checkSameMembers = array_diff($userArray,$isUnique);
+                                        // dd($userArray);
+                                        if(count($checkSameMembers) == 0){
+                                            $flagExists = true;
+                                        } else {
+                                            $flagExists = false;
+                                        }
+                                    }
                                 }
-                            } 
-
-
-                            // check if group is new
-                            if($request->is_existing == 0){
+    
+                                if($flagExists){
+                                    DB::rollback();
+                                    $responseData['message'] = "Group with same name and same members already Exists"; 
+                                    $responseData['status'] = 400;
+                                    return $this->commonResponse($responseData, 200);
+                                }
+    
+    
                                 $addGroup = new ChatGroup();
                                 $addGroup->group_name = $request->group_name;
                                 $addGroup->created_by = $currentUser->id;
                                 $addGroup->is_single = 2;
                                 $addGroup->save();
-
+    
                                 // need to add chat members in chat group
                                 if(isset($addGroup)){
-
+    
                                     $membersData = [];
-
+    
                                     foreach($isUnique as $members){
                                         $membersData[] = ['user_id' => $members, 'group_id' => $addGroup->id, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s') ];
                                     }
                                     $addMembers = ChatMember::insert($membersData);
                                     DB::commit();
-
+    
                                     $finalData = ChatGroup::where('id',$addGroup->id)->where('deleted_at',NULL)->with(['chatmembers' => function($query){
                                         $query->where('deleted_at',NULL)->select('id',"group_id","user_id")->with('user:id,username,email');
                                     }])->whereHas('chatmembers',function($query){
@@ -230,29 +247,57 @@ class GeneralController extends Controller
                                     $responseData['data'] = $finalData;
                                     return $this->commonResponse($responseData, 200);
                                 }
-                            // check if group is existing   
-                            } else if($request->is_existing == 1){
-                                // check whether he/she is admin or not
-                                $isAdmin = ChatGroup::where(['created_by' => $currentUser->id,'group_id' => $request->group_id,'deleted_at' => null])->first();
-                                if(isset($isAdmin) && !empty($isAdmin)){
-
-                                } else {
+                            }
+                        // check if group is existing   
+                        } else if($request->is_existing == 1){
+                            // check whether he/she is admin or not
+                            $isAdmin = ChatGroup::where(['created_by' => $currentUser->id,'id' => $request->group_id,'deleted_at' => null])->first();
+                            if(isset($isAdmin) && !empty($isAdmin)){
+                                // check if any member are already present or not
+                                $onlyNewMembers = true;
+                                foreach ($isUnique as $userData){
+                                    $userExists = ChatMember::where('group_id',$request->group_id)->where('user_id',$userData)->where('deleted_at',null)->where('is_left',0)->exists();
+                                    if($userExists){
+                                        $onlyNewMembers = false;
+                                        break;
+                                    }
+                                }
+                                if(!$onlyNewMembers){
                                     DB::rollback();
-                                    $responseData['message'] = "You cannot add members ,You are not a admin"; 
+                                    $responseData['message'] = "Members are already there in your group.Please add new members"; 
                                     $responseData['status'] = 400;
                                     return $this->commonResponse($responseData, 200);
-                                }
+                                } else {
+                                    // new members
+                                    $membersData = [];
 
+                                    foreach($isUnique as $members){
+                                        $membersData[] = ['user_id' => $members, 'group_id' => $request->group_id, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s') ];
+                                    }
+                                    $addMembers = ChatMember::insert($membersData);
+                                    DB::commit();
+
+                                    $finalData = ChatGroup::where('id',$request->group_id)->where('deleted_at',NULL)->with(['chatmembers' => function($query){
+                                        $query->where('deleted_at',NULL)->select('id',"group_id","user_id")->with('user:id,username,email');
+                                    }])->whereHas('chatmembers',function($query){
+                                        $query->where('deleted_at',NULL);
+                                    })->first();
+                                    $responseData['message'] = "Members Added Successfully"; 
+                                    $responseData['status'] = 200;
+                                    $responseData['data'] = $finalData;
+                                    return $this->commonResponse($responseData, 200);
+                                }
+                            } else {
+                                DB::rollback();
+                                $responseData['message'] = "You cannot add members ,You are not a admin"; 
+                                $responseData['status'] = 400;
+                                return $this->commonResponse($responseData, 200);
                             }
-                        } else {
-                            DB::rollback();
-                            $responseData['message'] = "Members must exists in users list"; 
-                            $responseData['status'] = 400;
-                            return $this->commonResponse($responseData, 200);
+
                         }
                     } else {
                         DB::rollback();
-                        $responseData['message'] = "Members Count must be greater than 2";
+                        $responseData['message'] = "Members must exists in users list"; 
                         $responseData['status'] = 400;
                         return $this->commonResponse($responseData, 200);
                     }

@@ -145,4 +145,62 @@ class GeneralController extends Controller
             return $this->commonResponse($responseData, $code);
         }
     }
+
+
+    /**
+     * This function is used for add group api
+     */
+    public function addGroup(Request $request){
+        // dd("bhvhj");
+        $responseData = array();
+        $responseData['status'] = 0;
+        $responseData['message'] = '';
+        $responseData['data'] = (object) [];
+        DB::beginTransaction();
+        try{
+            $validator = Validator::make($request->all(), [
+                'group_name' => 'required',
+            ]);
+            $currentUser = $request->get('user');
+            if ($validator->fails()) {
+                $responseData['message'] = $validator->errors()->first();
+                DB::rollback();
+                return $this->commonResponse($responseData, 200);
+            } else {
+                // member must be greater than 1/
+                if(isset($request->members)){
+                    // check count 
+                    if(count($request->members) > 2){
+                        // check whether same members are not there in array
+                        $isUnique = array_unique($request->members);
+
+                        // check members array exist
+                        $userExists = User::whereIn('id',$isUnique)->exists();
+                        dd($userExists); 
+                    } else {
+                        DB::rollback();
+                        $responseData['message'] = "Members Count must be greater than or equal to 2";
+                        $responseData['status'] = 400;
+                        return $this->commonResponse($responseData, 200);
+                    }
+                } else {
+                    DB::rollback();
+                    $responseData['message'] = "Members must be needed for group";
+                    $responseData['status'] = 400;
+                    return $this->commonResponse($responseData, 200);
+                }
+            }
+        } catch (Exception $e){
+            DB::rollback();
+            $catchError = 'Error code: '.$e->getCode().PHP_EOL;
+            $catchError .= 'Error file: '.$e->getFile().PHP_EOL;
+            $catchError .= 'Error line: '.$e->getLine().PHP_EOL;
+            $catchError .= 'Error message: '.$e->getMessage().PHP_EOL;
+            Log::emergency($catchError);
+
+            $code = ($e->getCode() != '')?$e->getCode():500;
+            $responseData['message'] = "Something went wrong";
+            return $this->commonResponse($responseData, $code);
+        }
+}
 }

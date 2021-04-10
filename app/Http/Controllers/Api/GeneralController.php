@@ -34,7 +34,7 @@ class GeneralController extends Controller
                 return $this->commonResponse($responseData, 200);
             } else {
                 // check user exists
-                $userExists = User::where('id',$request->user_id)->first();
+                $userExists = User::where('id',$request->user_id)->where('status',1)->first();
                 if(!isset($userExists) && empty($userExists)){
                     $responseData['message'] = "User is not exists";
                     DB::rollback();
@@ -174,7 +174,7 @@ class GeneralController extends Controller
                     $isUnique = array_unique($request->members);
                     $flag = true;
                     foreach ($isUnique as $userData){
-                        $userExists = User::where('id',$userData)->exists();
+                        $userExists = User::where('id',$userData)->where('status',1)->exists();
                         if(!$userExists){
                             $flag = false;
                         }

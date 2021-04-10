@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\ChatGroup;
+use App\Models\ChatMember;
+use App\Models\MessageReceivers;
 use DB;
 use Validator;
 
@@ -58,11 +61,40 @@ class ChatController extends Controller
                 DB::rollback();
                 return $this->commonResponse($responseData, 200);
             }
-
+            $chatGroupId = null;
             if(empty($groupId)){
 
+
             } else {
-                // $chatGroup = 
+                $chatGroup = ChatGroup::where('id', $groupId)->first();
+                if(!isset($chatGroup) && empty($chatGroup)){
+                    $responseData['status'] = 404;
+                    $responseData['message'] = 'Group is not found. Please check your group id';
+                    DB::rollback();
+                    return $this->commonResponse($responseData, 404);
+                }
+                $chatGroupId = $chatGroup->id;
+                // $total_members = MessageReceivers::
+                // $chatMembers = 
+            }
+
+            if($chatGroupId != null){
+                $total_members = ChatMember::where('group_id',$chatGroupId)->with('user:id,username,email,deleted_at')->whereHas('user',function($query){
+                    $query->where('deleted_at', null)->where('status',1);
+                })->get();
+
+
+                if($total_members->count() == 2){
+                    $is_single = 1;
+                }
+
+                if($total_members->count() == 1){
+                    $responseData['status'] = 200;
+                    $responseData['message'] = 'Please add members to the group';
+                    DB::rollback();
+                    return $this->commonResponse($responseData, 404);
+                    
+                }
             }
 
         } catch (\Exception $e) {

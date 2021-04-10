@@ -192,22 +192,25 @@ class GeneralController extends Controller
                             
                                 $flagExists = false;
                                 // check Group Exists with same name
-                                $checkGroupExists = ChatGroup::where(['group_name' => $request->group_name,'deleted_at' => null,'created_by' => $currentUser->id])->first();
-                                if(empty($checkGroupExists)){
+                                $checkGroupExists = ChatGroup::where(['group_name' => $request->group_name,'deleted_at' => null,'created_by' => $currentUser->id])->get();
+                                if(empty($checkGroupExists) && count($checkGroupExists) == 0){
                                     $flagExists = false;
                                 } else {
-                                    // check same mebers are there or different members
-                                    $checkMembers = ChatMember::where('group_id',$checkGroupExists->id)->where('is_left',0)->where('deleted_at',null)->get();
-                                    if(isset($checkMembers) && empty($checkMembers)){
-                                        $flagExists = false;
-                                    } else {
-                                        $userArray = $checkMembers->pluck('user_id')->toArray();
-                                        $checkSameMembers = array_diff($userArray,$isUnique);
-                                        // dd($userArray);
-                                        if(count($checkSameMembers) == 0){
-                                            $flagExists = true;
-                                        } else {
+                                    $checkMembers = [];
+                                    foreach($checkGroupExists as $checkGroup){
+                                        // check same mebers are there or different members
+                                        $checkMembers = ChatMember::where('group_id',$checkGroup->id)->where('is_left',0)->where('deleted_at',null)->get();
+                                        if(isset($checkMembers) && empty($checkMembers)){
                                             $flagExists = false;
+                                        } else {
+                                            $userArray = $checkMembers->pluck('user_id')->toArray();
+                                            $checkSameMembers = array_diff($userArray,$isUnique);
+                                            if(count($checkSameMembers) == 0){
+                                                $flagExists = true;
+                                                break;
+                                            } else {
+                                                $flagExists = false;
+                                            }
                                         }
                                     }
                                 }
@@ -320,5 +323,41 @@ class GeneralController extends Controller
             $responseData['message'] = "Something went wrong";
             return $this->commonResponse($responseData, $code);
         }
-}
+    }
+
+
+    /**
+     * Remove member from group
+    */
+    public function removeMembersFromGroup(Request $request){
+        $responseData = array();
+        $responseData['status'] = 0;
+        $responseData['message'] = '';
+        $responseData['data'] = (object) [];
+        DB::beginTransaction();
+        try{
+            $validator = Validator::make($request->all(), [
+                'group_id' => 'required',
+                'user_id' => 'required',
+            ]);
+            $currentUser = $request->get('user');
+            if ($validator->fails()) {
+                $responseData['message'] = $validator->errors()->first();
+                DB::rollback();
+                return $this->commonResponse($responseData, 200);
+            } else {
+            }
+        } catch(Exception $e){
+            DB::rollback();
+            $catchError = 'Error code: '.$e->getCode().PHP_EOL;
+            $catchError .= 'Error file: '.$e->getFile().PHP_EOL;
+            $catchError .= 'Error line: '.$e->getLine().PHP_EOL;
+            $catchError .= 'Error message: '.$e->getMessage().PHP_EOL;
+            Log::emergency($catchError);
+
+            $code = ($e->getCode() != '')?$e->getCode():500;
+            $responseData['message'] = "Something went wrong";
+            return $this->commonResponse($responseData, $code);
+        }
+    }
 }

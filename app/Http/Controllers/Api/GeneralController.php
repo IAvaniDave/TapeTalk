@@ -168,6 +168,7 @@ class GeneralController extends Controller
                 DB::rollback();
                 return $this->commonResponse($responseData, 200);
             } else {
+                $request->members = explode(",",$request->members);
                 // member must be greater than 2
                 if(isset($request->members)){
                     // check whether same members are not there in array
@@ -222,11 +223,16 @@ class GeneralController extends Controller
                                     return $this->commonResponse($responseData, 200);
                                 }
     
-    
+
+                                if(isset($request->group_image)){
+                                    $group_image = $request->group_image;
+                                    $group_image = public_path(). '\images\groups'.$group_image;
+                                }
                                 $addGroup = new ChatGroup();
                                 $addGroup->group_name = $request->group_name;
                                 $addGroup->created_by = $currentUser->id;
                                 $addGroup->is_single = 2;
+                                $addGroup->group_image = (isset($request->group_image)) ? $request->group_image : null;
                                 $addGroup->save();
     
                                 // need to add chat members in chat group
@@ -346,7 +352,34 @@ class GeneralController extends Controller
                 DB::rollback();
                 return $this->commonResponse($responseData, 200);
             } else {
-
+                if($currentUser->id == $request->user_id){
+                    DB::rollback();
+                    $responseData['message'] = "You cannot remove yourself";
+                    $responseData['code'] = 400;
+                    return $this->commonResponse($responseData, 200);
+                }
+                // group exist with current user and also he/she is admin in that group.
+                $groupExists = ChatGroup::where(['id' => $request->group_id,'is_single' => 2,'deleted_at' => null,'created_by' => $currentUser->id])->first();
+                if(isset($groupExists) && !empty($groupExists)){
+                    $chatMembers = ChatMember::where(['user_id' => $request->user_id,'is_left' => 0,'deleted_at' => null,'group_id' => $request->group_id])->first();
+                    if(isset($chatMembers) && !empty($chatMembers)){
+                        $updateMembers = ChatMember::where('id', $chatMembers->id)->update(['deleted_at' => date('Y-m-d H:i:s')]);
+                        DB::commit();
+                        $responseData['message'] = "User Removed Successfully";
+                        $responseData['status'] = 200;
+                        return $this->commonResponse($responseData, 200);
+                    } else {
+                        DB::rollback();
+                        $responseData['message'] = "Member Doesnt Exists in group";
+                        $responseData['status'] = 400;
+                        return $this->commonResponse($responseData, 200);
+                    }
+                } else {
+                    DB::rollback();
+                    $responseData['message'] = "Group Doesn't Exists";
+                    $responseData['status'] = 400;
+                    return $this->commonResponse($responseData, 200);
+                }
             }
         } catch(Exception $e){
             DB::rollback();

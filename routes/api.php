@@ -20,6 +20,7 @@ Route::group(['middleware' => ['api-access']], function () {
     Route::post('/block-user','Api\GeneralController@blockUser');
     Route::post('/users-list','Api\GeneralController@usersList');
     Route::post('/add-group','Api\GeneralController@addGroup');
+    Route::post('/remove-members','Api\GeneralController@removeMembersFromGroup');
 });
 Route::get('/test' , function (){
     return "API is working";

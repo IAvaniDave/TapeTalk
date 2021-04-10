@@ -160,6 +160,7 @@ class GeneralController extends Controller
         try{
             $validator = Validator::make($request->all(), [
                 'group_name' => 'required',
+                'is_existing' => 'required',
             ]);
             $currentUser = $request->get('user');
             if ($validator->fails()) {
@@ -167,19 +168,40 @@ class GeneralController extends Controller
                 DB::rollback();
                 return $this->commonResponse($responseData, 200);
             } else {
-                // member must be greater than 1/
+                // member must be greater than 2
                 if(isset($request->members)){
+                    // check whether same members are not there in array
+                    $isUnique = array_unique($request->members);
                     // check count 
-                    if(count($request->members) > 2){
-                        // check whether same members are not there in array
-                        $isUnique = array_unique($request->members);
+                    if(count($isUnique) > 2){
+                        $flag = true;
+                        foreach ($isUnique as $userData){
+                            $userExists = User::where('id',$userData)->exists();
+                            if(!$userExists){
+                                $flag = false;
+                            }
+                        }
+                        // all user details exists
+                        if($flag){
+                            // check if group is new
+                            if($request->is_existing == 1){
+                                $addGroup = new ChatGroup();
+                                $addGroup->group_name = $request->group_name;
+                                $addGroup->created_by = $currentUser->id;
+                                $addGroup->save();
+                            // check if group is existing   
+                            } else if($request->is_existing == 0){
 
-                        // check members array exist
-                        $userExists = User::whereIn('id',$isUnique)->exists();
-                        dd($userExists); 
+                            }
+                        } else {
+                            DB::rollback();
+                            $responseData['message'] = "Members must exists in users list"; 
+                            $responseData['status'] = 400;
+                            return $this->commonResponse($responseData, 200);
+                        }
                     } else {
                         DB::rollback();
-                        $responseData['message'] = "Members Count must be greater than or equal to 2";
+                        $responseData['message'] = "Members Count must be greater than 2";
                         $responseData['status'] = 400;
                         return $this->commonResponse($responseData, 200);
                     }

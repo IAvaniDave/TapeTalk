@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BlockedUser;
+use App\Models\ChatGroup;
+use App\Models\ChatMember;
 use App\User;
 use DB;
 use Validator;
@@ -159,7 +161,6 @@ class GeneralController extends Controller
         DB::beginTransaction();
         try{
             $validator = Validator::make($request->all(), [
-                'group_name' => 'required',
                 'is_existing' => 'required',
             ]);
             $currentUser = $request->get('user');
@@ -183,14 +184,64 @@ class GeneralController extends Controller
                         }
                         // all user details exists
                         if($flag){
+                            $flagExists = false;
+                            // check Group Exists with same name
+                            $checkGroupExists = ChatGroup::where(['group_name' => $request->group_name,'deleted_at' => null,'created_by' => $currentUser->id])->first();
+                            if(empty($checkGroupExists)){
+                                $flagExists = false;
+                            } else {
+                                // check same mebers are there or different members
+                                $checkMembers = ChatMember::where('group_id',$checkGroupExists->id)->where('is_left',0)->where('deleted_at',null)->get();
+                                if(isset($checkMembers) && empty($checkMembers)){
+                                    $flagExists = false;
+                                } else {
+                                    $userArray = $checkMembers->pluck('user_id');
+                                    dd($userArray);
+                                }
+                            } 
+
+
                             // check if group is new
-                            if($request->is_existing == 1){
+                            if($request->is_existing == 0){
                                 $addGroup = new ChatGroup();
                                 $addGroup->group_name = $request->group_name;
                                 $addGroup->created_by = $currentUser->id;
+                                $addGroup->is_single = 2;
                                 $addGroup->save();
+
+                                // need to add chat members in chat group
+                                if(isset($addGroup)){
+
+                                    $membersData = [];
+
+                                    foreach($isUnique as $members){
+                                        $membersData[] = ['user_id' => $members, 'group_id' => $addGroup->id, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s') ];
+                                    }
+                                    $addMembers = ChatMember::insert($membersData);
+                                    DB::commit();
+
+                                    $finalData = ChatGroup::where('id',$addGroup->id)->where('deleted_at',NULL)->with(['chatmembers' => function($query){
+                                        $query->where('deleted_at',NULL)->select('id',"group_id","user_id")->with('user:id,username,email');
+                                    }])->whereHas('chatmembers',function($query){
+                                        $query->where('deleted_at',NULL);
+                                    })->first();
+                                    $responseData['message'] = "Group Added Successfully"; 
+                                    $responseData['status'] = 200;
+                                    $responseData['data'] = $finalData;
+                                    return $this->commonResponse($responseData, 200);
+                                }
                             // check if group is existing   
-                            } else if($request->is_existing == 0){
+                            } else if($request->is_existing == 1){
+                                // check whether he/she is admin or not
+                                $isAdmin = ChatGroup::where(['created_by' => $currentUser->id,'group_id' => $request->group_id,'deleted_at' => null])->first();
+                                if(isset($isAdmin) && !empty($isAdmin)){
+
+                                } else {
+                                    DB::rollback();
+                                    $responseData['message'] = "You cannot add members ,You are not a admin"; 
+                                    $responseData['status'] = 400;
+                                    return $this->commonResponse($responseData, 200);
+                                }
 
                             }
                         } else {

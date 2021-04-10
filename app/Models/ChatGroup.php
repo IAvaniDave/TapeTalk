@@ -13,4 +13,8 @@ class ChatGroup extends Model
     protected $table = "chat_groups";
 
     protected $guarded = [];
+
+    public function chatMembers(){
+        return $this->hasMany('App\Models\ChatMember','group_id');
+    }
 }

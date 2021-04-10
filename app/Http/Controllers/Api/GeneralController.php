@@ -192,7 +192,7 @@ class GeneralController extends Controller
                             
                                 $flagExists = false;
                                 // check Group Exists with same name
-                                $checkGroupExists = ChatGroup::where(['group_name' => $request->group_name,'deleted_at' => null,'created_by' => $currentUser->id])->get();
+                                $checkGroupExists = ChatGroup::where(['group_name' => $request->group_name,'deleted_at' => null,'created_by' => $currentUser->id,'is_single' => 2])->get();
                                 if(empty($checkGroupExists) && count($checkGroupExists) == 0){
                                     $flagExists = false;
                                 } else {
@@ -240,7 +240,7 @@ class GeneralController extends Controller
                                     $addMembers = ChatMember::insert($membersData);
                                     DB::commit();
     
-                                    $finalData = ChatGroup::where('id',$addGroup->id)->where('deleted_at',NULL)->with(['chatmembers' => function($query){
+                                    $finalData = ChatGroup::where('id',$addGroup->id)->where('deleted_at',NULL)->where('is_single',2)->with(['chatmembers' => function($query){
                                         $query->where('deleted_at',NULL)->select('id',"group_id","user_id")->with('user:id,username,email');
                                     }])->whereHas('chatmembers',function($query){
                                         $query->where('deleted_at',NULL);
@@ -254,7 +254,7 @@ class GeneralController extends Controller
                         // check if group is existing   
                         } else if($request->is_existing == 1){
                             // check whether he/she is admin or not
-                            $isAdmin = ChatGroup::where(['created_by' => $currentUser->id,'id' => $request->group_id,'deleted_at' => null])->first();
+                            $isAdmin = ChatGroup::where(['created_by' => $currentUser->id,'is_single' => 2,'id' => $request->group_id,'deleted_at' => null])->first();
                             if(isset($isAdmin) && !empty($isAdmin)){
                                 // check if any member are already present or not
                                 $onlyNewMembers = true;
@@ -280,7 +280,7 @@ class GeneralController extends Controller
                                     $addMembers = ChatMember::insert($membersData);
                                     DB::commit();
 
-                                    $finalData = ChatGroup::where('id',$request->group_id)->where('deleted_at',NULL)->with(['chatmembers' => function($query){
+                                    $finalData = ChatGroup::where('id',$request->group_id)->where('is_single',2)->where('deleted_at',NULL)->with(['chatmembers' => function($query){
                                         $query->where('deleted_at',NULL)->select('id',"group_id","user_id")->with('user:id,username,email');
                                     }])->whereHas('chatmembers',function($query){
                                         $query->where('deleted_at',NULL);
@@ -346,6 +346,7 @@ class GeneralController extends Controller
                 DB::rollback();
                 return $this->commonResponse($responseData, 200);
             } else {
+
             }
         } catch(Exception $e){
             DB::rollback();

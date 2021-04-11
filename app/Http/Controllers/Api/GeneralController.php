@@ -489,11 +489,11 @@ class GeneralController extends Controller
                 if(isset($groupExists) && !empty($groupExists)){
                     $membersExists = ChatMember::where(['deleted_at' => null,'group_id' => $request->group_id,'user_id' => $currentUser->id,'is_left' => 0])->first();
                     if(isset($membersExists) && !empty($membersExists)){
-                        $messageList = ChatMessage::select('id','group_id','sender_id','text','updated_at')->where(['group_id' => $request->group_id])->with('user:id,username,email,logo,status,deleted_at')->with(['group' => function($query){
+                        $messageList = ChatMessage::select('id','group_id','sender_id','text')->where(['group_id' => $request->group_id])->with('user:id,username,email,logo,status,deleted_at')->with(['group' => function($query){
                             $query->where('deleted_at',null)->select('id','group_name','group_image');
                         }])->whereHas('group',function($query){
                             $query->where('deleted_at',null);
-                        })->orderBy('updated_at','desc')->get();
+                        })->get();
                         $responseData['status'] = 200;
                         $responseData['message'] = "Success";
                         $responseData['data'] = $messageList;
@@ -515,6 +515,88 @@ class GeneralController extends Controller
 
             }
         } catch(Exception $e){
+            $catchError = 'Error code: '.$e->getCode().PHP_EOL;
+            $catchError .= 'Error file: '.$e->getFile().PHP_EOL;
+            $catchError .= 'Error line: '.$e->getLine().PHP_EOL;
+            $catchError .= 'Error message: '.$e->getMessage().PHP_EOL;
+            Log::emergency($catchError);
+
+            $code = ($e->getCode() != '')?$e->getCode():500;
+            $responseData['message'] = "Something went wrong";
+            return $this->commonResponse($responseData, $code);
+        }
+    }
+
+
+
+    /**
+     * Get User Details
+     */
+    public function getUserDetails(Request $request){
+        $responseData = array();
+        $responseData['status'] = 0;
+        $responseData['message'] = '';
+        $responseData['data'] = (object) [];
+        try{
+            $currentUser = $request->get('user');
+            $responseData['data'] = $currentUser;
+            $responseData['status'] = 200;
+            $responseData['message'] = "Profile Retrived Successfully";
+            return $this->commonResponse($responseData, 200);
+        } catch(Exception $e){
+            $catchError = 'Error code: '.$e->getCode().PHP_EOL;
+            $catchError .= 'Error file: '.$e->getFile().PHP_EOL;
+            $catchError .= 'Error line: '.$e->getLine().PHP_EOL;
+            $catchError .= 'Error message: '.$e->getMessage().PHP_EOL;
+            Log::emergency($catchError);
+
+            $code = ($e->getCode() != '')?$e->getCode():500;
+            $responseData['message'] = "Something went wrong";
+            return $this->commonResponse($responseData, $code);
+        }
+    }
+
+
+    /**
+     * Edit User Profile
+     */
+    public function editUserProfile(Request $request){
+        $responseData = array();
+        $responseData['status'] = 0;
+        $responseData['message'] = '';
+        $responseData['data'] = (object) [];
+        DB::beginTransaction();
+        try{
+            $currentUser = $request->get('user');
+            $updatedData = [];
+            if(isset($request->logo) && $request->file('logo') != ""){
+                if(($currentUser->gender == 1 && $currentUser->logo != "male.png") || ($currentUser->gender == 2 && $currentUser->logo != "female.png")){
+                    // unlink the logo
+                    if (File::exists(public_path('images/users/'.$currentUser->logo))) {
+                        File::delete(public_path('images/users/'.$currentUser->logo));
+                    }
+                }
+                // set new logo
+                $file =  $request->file('logo');
+                $updatedLogo = uniqid('logo_', true).time().'.'.$file->getClientOriginalExtension();
+                $upload = public_path().'/images/users/';
+                $file->move($upload,$updatedLogo);
+                $updatedData['logo'] = $updatedLogo;
+            }
+            if(isset($request->birth_date)){
+                $updatedData['birth_date'] = $request->birth_date;
+            }
+            if(isset($request->username)){
+                $updatedData['username'] = $request->username;
+
+            }
+            $update = User::where('id',$currentUser->id)->update($updatedData);
+            DB::commit();
+            $responseData['status'] = 200;
+            $responseData['message'] = 'User Details Edited Successfully';
+            return $this->commonResponse($responseData, 200);
+        } catch(Exception $e){
+            DB::rollback();
             $catchError = 'Error code: '.$e->getCode().PHP_EOL;
             $catchError .= 'Error file: '.$e->getFile().PHP_EOL;
             $catchError .= 'Error line: '.$e->getLine().PHP_EOL;

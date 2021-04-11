@@ -17,6 +17,8 @@ Route::post('/register', 'Api\UserController@register');
 Route::post('/login', 'Api\UserController@login');
 Route::post('/socialMediaLogin', 'Api\UserController@socialMediaLogin');
 Route::group(['middleware' => ['api-access']], function () {
+    Route::post('/details','Api\GeneralController@getUserDetails');
+    Route::post('/edit-profile','Api\GeneralController@editUserProfile');
     Route::post('/block-user','Api\GeneralController@blockUser');
     Route::post('/users-list','Api\GeneralController@usersList');
     Route::post('/add-group','Api\GeneralController@addGroup');

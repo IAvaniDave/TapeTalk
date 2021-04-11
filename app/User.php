@@ -32,7 +32,7 @@ class User extends Authenticatable
      * @var array
     */
     public $apiOnlyField = [
-        'id', 'username', 'email', 'logo', 'status', 'gender','password','api_token'
+        'id', 'username', 'email', 'logo', 'status', 'birth_date' , 'gender','password','api_token'
     ];
 
     /**

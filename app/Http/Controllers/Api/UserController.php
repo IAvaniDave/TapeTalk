@@ -49,6 +49,7 @@ class UserController extends Controller
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,NULL,id,deleted_at,NULL'],
                 'password' => ['required', 'string', 'min:8'],
                 'confirm_password' => ['required', 'string', 'min:8'],
+                "birth_date" => "required",
             ]);
             if ($validator->fails()) {
                 $responseData['message'] = $validator->errors()->first();
@@ -63,6 +64,7 @@ class UserController extends Controller
                     'gender' => $request->input('gender'),
                     'ip_address' => \Request::ip(),
                     'logo' => null,
+                    "birth_date" => $request->input('birth_date'),
                 ];
                 $user = User::create($user_data);
                 if ($user) {
@@ -75,6 +77,7 @@ class UserController extends Controller
                     $result['username'] = $user->username;
                     $result['email'] = $user->email;
                     $result['gender'] = $user->gender;
+                    $result['birth_date'] = $user->birth_date;
                     
                     // Log::info('Register successfully send sendEmailVerificationNotification');
                     // $user->sendEmailVerificationNotification();

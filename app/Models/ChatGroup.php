@@ -17,4 +17,7 @@ class ChatGroup extends Model
     public function chatMembers(){
         return $this->hasMany('App\Models\ChatMember','group_id');
     }
+    public function chatMessages(){
+        return $this->hasMany('App\Models\ChatMessage','group_id')->orderBy('updated_at','DESC');
+    }
 }

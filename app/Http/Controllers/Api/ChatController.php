@@ -203,4 +203,75 @@ class ChatController extends Controller
         }
         return $groupId;
     }
+
+     /**
+     * 
+     */
+    public function myChats(Request $request){
+        $responseData = array();
+        $responseData['status'] = 0;
+        $responseData['message'] = '';
+        $responseData['data'] = (object) [];
+        try{
+
+            $currentUser = $request->get('user');
+            // dd($currentUser->id);
+            $userExist = User::select('id','status','username')
+                            ->where('id',$currentUser->id)
+                            ->where('status',1)
+                            ->first();
+            if(isset($userExist) && !empty($userExist)){
+                $chatsGroups = ChatGroup::select('id','group_name','group_image','is_single')->with(['chatMembers:id,group_id,user_id,deleted_at','chatMembers.user:id,username,logo,deleted_at','chatMessages:id,group_id,sender_id,text,updated_at'])
+                ->whereHas('chatMembers' , function($query) use ($currentUser){
+                    $query->where('user_id', $currentUser->id);
+                })
+                ->with(['chatMessages' =>  function($query) use ($currentUser){
+                    // $query->orderBy('updated_at', 'DESC');
+                    $query->orderBy('updated_at', 'DESC');
+                }])
+                ->where('deleted_at',null)
+                ->orderBy('updated_at','DESC')
+                ->get();
+
+                // echo "<pre>";print_r($chatsGroups);exit;
+                
+                for($i = 0; $i < $chatsGroups->count(); $i++){
+                    foreach ($chatsGroups[$i]['chatMembers'] as $key => $member) {
+                        if($member->user_id == $currentUser->id){
+                            unset($chatsGroups[$i]['chatMembers'][$key]);
+                        }
+                    }
+                    if(isset($chatsGroups[$i]['chatMessages']) && isset($chatsGroups[$i]['chatMessages'][0])){
+                        $chatsGroups[$i]['lastMessage'] = $chatsGroups[$i]['chatMessages'][0]['text'];
+                    }else{
+                        $chatsGroups[$i]['lastMessage'] = 'No messages found';
+                    }
+                    unset($chatsGroups[$i]['chatMessages']);
+                }
+
+                $result = $chatsGroups->toArray();
+                
+                $responseData['data'] = $result;
+                $responseData['status'] = 200;
+                $responseData['message'] = 'Chat groups founded successfully';
+                return $this->commonResponse($responseData, 200);
+            } else {
+                $responseData['status'] = 500;
+                $responseData['message'] = 'Something went wrong...GroupId not found';
+                return $this->commonResponse($responseData, 200);
+            }
+
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            $catchError = 'Error code: '.$e->getCode().PHP_EOL;
+            $catchError .= 'Error file: '.$e->getFile().PHP_EOL;
+            $catchError .= 'Error line: '.$e->getLine().PHP_EOL;
+            $catchError .= 'Error message: '.$e->getMessage().PHP_EOL;
+            \Log::emergency($catchError);
+
+            $responseData['message'] = "Something went wrong";
+            return $this->commonResponse($responseData, 500);
+        }
+    }
 }

@@ -63,7 +63,7 @@ class UserController extends Controller
                     'status' => 1,
                     'gender' => $request->input('gender'),
                     'ip_address' => \Request::ip(),
-                    'logo' => null,
+                    'logo' => $request->input('gender') == "1" ? 'male.png' : 'female.png',
                     "birth_date" => $request->input('birth_date'),
                 ];
                 $user = User::create($user_data);
@@ -78,6 +78,7 @@ class UserController extends Controller
                     $result['email'] = $user->email;
                     $result['gender'] = $user->gender;
                     $result['birth_date'] = $user->birth_date;
+                    $result['logo'] = $user->logo;
                     
                     // Log::info('Register successfully send sendEmailVerificationNotification');
                     // $user->sendEmailVerificationNotification();

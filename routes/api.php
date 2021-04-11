@@ -23,6 +23,7 @@ Route::group(['middleware' => ['api-access']], function () {
     Route::post('/send-message','Api\ChatController@sendMessge');
     Route::post('/remove-members','Api\GeneralController@removeMembersFromGroup');
     Route::post('/edit-group-details','Api\GeneralController@editGroupDetails');
+    Route::post('/message-list','Api\GeneralController@messageList');
 });
 Route::get('/test' , function (){
     return "API is working";

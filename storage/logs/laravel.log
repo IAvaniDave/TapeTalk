@@ -144,3 +144,7 @@
 [2021-04-10 15:41:32] local.INFO: API Request: {"group_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
 [2021-04-10 15:43:03] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
 [2021-04-10 15:43:03] local.INFO: API Request: {"group_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
+[2021-04-11 11:29:11] local.INFO: ApiAccessible access middlewhere token:: K1kbkY1O9M0tIWijzW6QbwC5rjBySbMMHM4ugoh5WQ8QqjyirJEsYy6kpIZT  
+[2021-04-11 11:29:11] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\""}  
+[2021-04-11 11:29:19] local.INFO: ApiAccessible access middlewhere token:: K1kbkY1O9M0tIWijzW6QbwC5rjBySbMMHM4ugoh5WQ8QqjyirJEsYy6kpIZT  
+[2021-04-11 11:29:19] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  

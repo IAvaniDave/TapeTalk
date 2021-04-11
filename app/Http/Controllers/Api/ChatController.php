@@ -111,12 +111,19 @@ class ChatController extends Controller
                 $chatGroup = ChatGroup::where('id', $groupId)->first();
 
                 if(!isset($chatGroup) && empty($chatGroup)){
-                    $responseData['status'] = 404;
-                    $responseData['message'] = 'Group is not found. Please check your group id';
-                    DB::rollback();
-                    return $this->commonResponse($responseData, 404);
+                    if(empty($isGroup)){
+                        $responseData['status'] = 404;
+                        $responseData['message'] = 'Group is not found. Please check your group id';
+                        DB::rollback();
+                        return $this->commonResponse($responseData, 404);
+                    } 
                 }
-                $chatGroupId = $chatGroup->id;
+                if(!empty($isGroup)){
+                    $chatGroupId = $isGroup;        
+                } else if(isset($chatGroup) && !empty($chatGroup)) {
+                    $chatGroupId = $chatGroup->id;
+                }
+                
                 $newGroup = 0;
             }
 

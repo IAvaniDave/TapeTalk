@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\BlockedUser;
 use App\Models\ChatGroup;
 use App\Models\ChatMember;
+use App\Models\ChatMessage;
 use App\User;
 use DB;
 use Validator;
@@ -469,4 +470,60 @@ class GeneralController extends Controller
     /**
      * Message List Api
      */
+    public function messageList(Request $request){
+        $responseData = array();
+        $responseData['status'] = 0;
+        $responseData['message'] = '';
+        $responseData['data'] = (object) [];
+        try{    
+            $validator = Validator::make($request->all(), [
+                'group_id' => 'required',
+            ]);
+            $currentUser = $request->get('user');
+            if ($validator->fails()) {
+                $responseData['message'] = $validator->errors()->first();
+                return $this->commonResponse($responseData, 200);
+            } else {
+                // check GroupExists
+                $groupExists = ChatGroup::where(['deleted_at' => null,'id' => $request->group_id])->first();
+                if(isset($groupExists) && !empty($groupExists)){
+                    $membersExists = ChatMember::where(['deleted_at' => null,'group_id' => $request->group_id,'user_id' => $currentUser->id,'is_left' => 0])->first();
+                    if(isset($membersExists) && !empty($membersExists)){
+                        $messageList = ChatMessage::select('id','group_id','sender_id','text','updated_at')->where(['group_id' => $request->group_id])->with('user:id,username,email,logo,status,deleted_at')->with(['group' => function($query){
+                            $query->where('deleted_at',null)->select('id','group_name','group_image');
+                        }])->whereHas('group',function($query){
+                            $query->where('deleted_at',null);
+                        })->orderBy('updated_at','desc')->get();
+                        $responseData['status'] = 200;
+                        $responseData['message'] = "Success";
+                        $responseData['data'] = $messageList;
+                        return $this->commonResponse($responseData, 200);
+                    } else {
+                        if($groupExists->is_single == 1){
+                            $responseData['message'] = "You have not chatted with this user";
+                        } else {
+                            $responseData['message'] = "You are not a member of this group";
+                        }
+                        $responseData['status'] = 400;
+                        return $this->commonResponse($responseData, 200);
+                    }
+                } else {
+                    $responseData['message'] = "Group Doesnt Exists";
+                    $responseData['status'] = 400;
+                    return $this->commonResponse($responseData, 200);
+                }
+
+            }
+        } catch(Exception $e){
+            $catchError = 'Error code: '.$e->getCode().PHP_EOL;
+            $catchError .= 'Error file: '.$e->getFile().PHP_EOL;
+            $catchError .= 'Error line: '.$e->getLine().PHP_EOL;
+            $catchError .= 'Error message: '.$e->getMessage().PHP_EOL;
+            Log::emergency($catchError);
+
+            $code = ($e->getCode() != '')?$e->getCode():500;
+            $responseData['message'] = "Something went wrong";
+            return $this->commonResponse($responseData, $code);
+        }
+    }
 }

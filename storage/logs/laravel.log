@@ -1,187 +1,107 @@
-<<<<<<< HEAD
-[2021-04-10 14:50:00] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 14:50:00] local.INFO: API Request: {"new_user_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 14:50:24] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 14:50:24] local.INFO: API Request: {"new_user_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 14:52:50] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 14:52:50] local.INFO: API Request: {"new_user_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 14:53:39] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 14:53:39] local.INFO: API Request: {"new_user_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 14:53:43] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 14:53:43] local.INFO: API Request: {"new_user_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 14:53:55] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 14:53:55] local.INFO: API Request: {"new_user_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 14:54:08] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 14:54:08] local.INFO: API Request: {"new_user_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:18:48] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:18:48] local.INFO: API Request: {"new_user_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:20:04] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:20:04] local.INFO: API Request: {"new_user_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:21:21] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:21:21] local.INFO: API Request: {"new_user_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:21:29] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:21:29] local.INFO: API Request: {"new_user_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:21:59] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:21:59] local.INFO: API Request: {"group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:22:11] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:22:11] local.INFO: API Request: {"group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:23:30] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:23:30] local.INFO: API Request: {"group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:23:49] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:23:49] local.INFO: API Request: {"group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:25:52] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:25:52] local.INFO: API Request: {"group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:27:25] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:27:25] local.INFO: API Request: {"group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:27:25] local.ERROR: Call to a member function count() on null {"exception":"[object] (Error(code: 0): Call to a member function count() on null at C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\app\\Http\\Controllers\\Api\\ChatController.php:84)
+[2021-04-11 11:49:54] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 11:49:54] local.INFO: API Request: {"new_user_id":"4","message":"hiiiiiiii11111"}  
+[2021-04-11 11:49:59] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 11:49:59] local.INFO: API Request: {"new_user_id":"4","message":"hiiiiiiii1111122222"}  
+[2021-04-11 14:27:11] local.INFO: ApiAccessible access middlewhere token:: K1kbkY1O9M0tIWijzW6QbwC5rjBySbMMHM4ugoh5WQ8QqjyirJEsYy6kpIZT  
+[2021-04-11 14:27:11] local.INFO: API Request: {"group_id":"3"}  
+[2021-04-11 14:27:26] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 14:27:26] local.INFO: API Request: {"group_id":"3"}  
+[2021-04-11 14:27:27] local.ERROR: Undefined variable: request {"exception":"[object] (ErrorException(code: 0): Undefined variable: request at C:\\xampp\\htdocs\\TapeTalk\\app\\Http\\Controllers\\Api\\GeneralController.php:478)
 [stacktrace]
-#0 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): App\\Http\\Controllers\\Api\\ChatController->sendMessge(Object(Illuminate\\Http\\Request))
-#1 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('sendMessge', Array)
-#2 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(239): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\Api\\ChatController), 'sendMessge')
-#3 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(196): Illuminate\\Routing\\Route->runController()
-#4 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(685): Illuminate\\Routing\\Route->run()
-#5 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
-#6 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\app\\Http\\Middleware\\ApiAccessible.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#7 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): App\\Http\\Middleware\\ApiAccessible->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#8 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#9 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#10 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#11 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
-#12 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#13 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
-#14 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
-#15 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
-#16 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
-#17 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
-#18 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
-#19 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#20 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#21 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#22 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#23 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#24 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#25 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#26 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#27 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#28 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#29 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#30 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#31 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#32 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
-#33 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
-#34 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
-#35 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\server.php(21): require_once('C:\\\\xampp\\\\htdocs...')
+#0 C:\\xampp\\htdocs\\TapeTalk\\app\\Http\\Controllers\\Api\\GeneralController.php(478): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined varia...', 'C:\\\\xampp\\\\htdocs...', 478, Array)
+#1 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): App\\Http\\Controllers\\Api\\GeneralController->messageList()
+#2 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('messageList', Array)
+#3 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(239): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\Api\\GeneralController), 'messageList')
+#4 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(196): Illuminate\\Routing\\Route->runController()
+#5 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(685): Illuminate\\Routing\\Route->run()
+#6 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#7 C:\\xampp\\htdocs\\TapeTalk\\app\\Http\\Middleware\\ApiAccessible.php(38): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#8 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): App\\Http\\Middleware\\ApiAccessible->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#9 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#10 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#11 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#12 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#13 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#14 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#15 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#16 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#17 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#18 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#19 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#21 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#22 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 C:\\xampp\\htdocs\\TapeTalk\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 C:\\xampp\\htdocs\\TapeTalk\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#34 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#35 C:\\xampp\\htdocs\\TapeTalk\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#36 C:\\xampp\\htdocs\\TapeTalk\\server.php(21): require_once('C:\\\\xampp\\\\htdocs...')
+#37 {main}
+"} 
+[2021-04-11 14:27:40] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 14:27:40] local.INFO: API Request: {"group_id":"3"}  
+[2021-04-11 14:27:40] local.ERROR: Class 'App\Http\Controllers\Api\ChatMessage' not found {"exception":"[object] (Error(code: 0): Class 'App\\Http\\Controllers\\Api\\ChatMessage' not found at C:\\xampp\\htdocs\\TapeTalk\\app\\Http\\Controllers\\Api\\GeneralController.php:491)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): App\\Http\\Controllers\\Api\\GeneralController->messageList(Object(Illuminate\\Http\\Request))
+#1 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('messageList', Array)
+#2 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(239): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\Api\\GeneralController), 'messageList')
+#3 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(196): Illuminate\\Routing\\Route->runController()
+#4 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(685): Illuminate\\Routing\\Route->run()
+#5 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#6 C:\\xampp\\htdocs\\TapeTalk\\app\\Http\\Middleware\\ApiAccessible.php(38): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): App\\Http\\Middleware\\ApiAccessible->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#8 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#9 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#10 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#11 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#12 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#13 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#14 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#15 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#16 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#17 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#18 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#19 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#21 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#22 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#23 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#24 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#25 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 C:\\xampp\\htdocs\\TapeTalk\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 C:\\xampp\\htdocs\\TapeTalk\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#33 C:\\xampp\\htdocs\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#34 C:\\xampp\\htdocs\\TapeTalk\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#35 C:\\xampp\\htdocs\\TapeTalk\\server.php(21): require_once('C:\\\\xampp\\\\htdocs...')
 #36 {main}
 "} 
-[2021-04-10 15:27:40] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:27:40] local.INFO: API Request: {"group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:30:28] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:30:28] local.INFO: API Request: {"group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:30:40] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:30:40] local.INFO: API Request: {"group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:30:54] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:30:54] local.INFO: API Request: {"group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:34:30] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:34:30] local.INFO: API Request: {"group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:35:33] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:35:33] local.INFO: API Request: {"group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:35:55] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:35:55] local.INFO: API Request: {"group_id":"2","new_user_id":"4","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:36:24] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:36:24] local.INFO: API Request: {"group_id":"2","new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:36:43] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:36:43] local.INFO: API Request: {"group_id":"2","new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:37:19] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:37:19] local.INFO: API Request: {"new_user_id":"1","group_id":"2","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:38:00] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:38:00] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:38:23] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:38:23] local.INFO: API Request: {"group_id":"2","new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:39:34] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:39:34] local.INFO: API Request: {"group_id":"1","new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:39:40] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:39:40] local.INFO: API Request: {"group_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:39:40] local.ERROR: Call to a member function count() on string {"exception":"[object] (Error(code: 0): Call to a member function count() on string at C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\app\\Http\\Controllers\\Api\\ChatController.php:127)
-[stacktrace]
-#0 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): App\\Http\\Controllers\\Api\\ChatController->sendMessge(Object(Illuminate\\Http\\Request))
-#1 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('sendMessge', Array)
-#2 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(239): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\Api\\ChatController), 'sendMessge')
-#3 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(196): Illuminate\\Routing\\Route->runController()
-#4 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(685): Illuminate\\Routing\\Route->run()
-#5 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
-#6 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\app\\Http\\Middleware\\ApiAccessible.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#7 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): App\\Http\\Middleware\\ApiAccessible->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#8 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#9 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#10 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#11 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
-#12 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#13 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
-#14 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
-#15 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
-#16 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
-#17 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
-#18 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
-#19 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#20 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#21 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#22 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#23 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#24 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#25 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#26 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#27 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#28 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#29 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#30 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
-#31 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
-#32 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
-#33 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
-#34 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
-#35 C:\\xampp\\htdocs\\Laravel\\TapeTalkGit\\TapeTalk\\server.php(21): require_once('C:\\\\xampp\\\\htdocs...')
-#36 {main}
-"} 
-[2021-04-10 15:41:32] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:41:32] local.INFO: API Request: {"group_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-10 15:43:03] local.INFO: ApiAccessible access middlewhere token:: 1EwSSqHflE00NMiOgprGNg5CYxagtijiK8roR3zxi5CvfYitFIxsUsurfW11  
-[2021-04-10 15:43:03] local.INFO: API Request: {"group_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-11 11:29:11] local.INFO: ApiAccessible access middlewhere token:: K1kbkY1O9M0tIWijzW6QbwC5rjBySbMMHM4ugoh5WQ8QqjyirJEsYy6kpIZT  
-[2021-04-11 11:29:11] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\""}  
-[2021-04-11 11:29:19] local.INFO: ApiAccessible access middlewhere token:: K1kbkY1O9M0tIWijzW6QbwC5rjBySbMMHM4ugoh5WQ8QqjyirJEsYy6kpIZT  
-[2021-04-11 11:29:19] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-=======
-[2021-04-11 11:04:24] local.INFO: userLoginSuccessResponse ::Array
-(
-    [fcm_token] => 
-    [device_type] => 1
-)
-  
-[2021-04-11 11:05:15] local.INFO: ApiAccessible access middlewhere token:: dWVBeGuOQqLpoevM1hPkMZx49pP4BKSWopEfIg7c9clSHUWOfTpJLKWcgu25  
-[2021-04-11 11:05:15] local.INFO: API Request: []  
-[2021-04-11 11:05:19] local.INFO: ApiAccessible access middlewhere token:: 0lWAHoy2uowKoSPC4cGqe65M7BXuZedlh2TOSelkFyAhiVoDUil97sVihI6r  
-[2021-04-11 11:05:19] local.INFO: API Request: []  
->>>>>>> 3c387a931910e00911f5f2eba2f7cb94fedebff6
-[2021-04-11 11:37:35] local.INFO: userLoginSuccessResponse ::Array
-(
-    [fcm_token] => 
-    [device_type] => 1
-)
-  
-[2021-04-11 11:37:52] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
-[2021-04-11 11:37:52] local.INFO: API Request: {"new_user_id":"3","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-11 11:37:56] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
-[2021-04-11 11:37:56] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
-[2021-04-11 11:38:42] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
-[2021-04-11 11:38:42] local.INFO: API Request: {"new_user_id":"1","message":"\"hellooo\"","device_type":"1","device_id":"1234"}  
-[2021-04-11 11:38:56] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
-[2021-04-11 11:38:56] local.INFO: API Request: {"new_user_id":"1","message":"\"hellooo\""}  
-[2021-04-11 11:39:02] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
-[2021-04-11 11:39:02] local.INFO: API Request: {"new_user_id":"1","message":"\"hellooo\""}  
-[2021-04-11 11:42:25] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
-[2021-04-11 11:42:25] local.INFO: API Request: {"new_user_id":"1","message":"hiiiiiiii","device_type":"1","device_id":"1234"}  
-[2021-04-11 11:42:35] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
-[2021-04-11 11:42:35] local.INFO: API Request: {"new_user_id":"1","message":"hiiiiiiii"}  
-[2021-04-11 11:42:51] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
-[2021-04-11 11:42:51] local.INFO: API Request: {"new_user_id":"4","message":"hiiiiiiii"}  
-[2021-04-11 11:42:58] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
-[2021-04-11 11:42:58] local.INFO: API Request: {"new_user_id":"4","message":"hiiiiiiii11111"}  
+[2021-04-11 14:27:53] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 14:27:53] local.INFO: API Request: {"group_id":"3"}  
+[2021-04-11 14:28:48] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 14:28:48] local.INFO: API Request: {"group_id":"3"}  
+[2021-04-11 14:29:33] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 14:29:33] local.INFO: API Request: {"group_id":"3"}  
+[2021-04-11 14:29:48] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 14:29:48] local.INFO: API Request: {"group_id":"3"}  
+[2021-04-11 14:30:48] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 14:30:48] local.INFO: API Request: {"group_id":"3"}  
+[2021-04-11 14:30:56] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 14:30:56] local.INFO: API Request: {"group_id":"3"}  
+[2021-04-11 14:32:14] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 14:32:14] local.INFO: API Request: {"group_id":"3"}  
+[2021-04-11 14:33:59] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 14:33:59] local.INFO: API Request: {"group_id":"3"}  

@@ -161,3 +161,27 @@
 [2021-04-11 11:05:19] local.INFO: ApiAccessible access middlewhere token:: 0lWAHoy2uowKoSPC4cGqe65M7BXuZedlh2TOSelkFyAhiVoDUil97sVihI6r  
 [2021-04-11 11:05:19] local.INFO: API Request: []  
 >>>>>>> 3c387a931910e00911f5f2eba2f7cb94fedebff6
+[2021-04-11 11:37:35] local.INFO: userLoginSuccessResponse ::Array
+(
+    [fcm_token] => 
+    [device_type] => 1
+)
+  
+[2021-04-11 11:37:52] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 11:37:52] local.INFO: API Request: {"new_user_id":"3","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
+[2021-04-11 11:37:56] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 11:37:56] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
+[2021-04-11 11:38:42] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 11:38:42] local.INFO: API Request: {"new_user_id":"1","message":"\"hellooo\"","device_type":"1","device_id":"1234"}  
+[2021-04-11 11:38:56] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 11:38:56] local.INFO: API Request: {"new_user_id":"1","message":"\"hellooo\""}  
+[2021-04-11 11:39:02] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 11:39:02] local.INFO: API Request: {"new_user_id":"1","message":"\"hellooo\""}  
+[2021-04-11 11:42:25] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 11:42:25] local.INFO: API Request: {"new_user_id":"1","message":"hiiiiiiii","device_type":"1","device_id":"1234"}  
+[2021-04-11 11:42:35] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 11:42:35] local.INFO: API Request: {"new_user_id":"1","message":"hiiiiiiii"}  
+[2021-04-11 11:42:51] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 11:42:51] local.INFO: API Request: {"new_user_id":"4","message":"hiiiiiiii"}  
+[2021-04-11 11:42:58] local.INFO: ApiAccessible access middlewhere token:: M25Y9Cnrdl8hELPuefpdOSPvDS4x7Bz65dESzmgezhQSCmMbzzEpPKnygEx1  
+[2021-04-11 11:42:58] local.INFO: API Request: {"new_user_id":"4","message":"hiiiiiiii11111"}  

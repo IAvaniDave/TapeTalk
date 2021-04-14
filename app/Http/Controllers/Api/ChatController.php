@@ -216,8 +216,9 @@ class ChatController extends Controller
         $responseData['data'] = (object) [];
         try{
 
+            $limit = isset($request->limit) ? $request->limit : 10;
+            $page = isset($request->page) ? $request->page : 1;
             $currentUser = $request->get('user');
-            
             $userExist = User::select('id','status','username')
                             ->where('id',$currentUser->id)
                             ->where('status',1)
@@ -230,28 +231,29 @@ class ChatController extends Controller
                 ->where('deleted_at',null)
                 ->orderBy('last_updated','DESC')
                 ->get();
-
-                // echo "<pre>";print_r($chatsGroups);exit;
                 
                 for($i = 0; $i < $chatsGroups->count(); $i++){
-                    foreach ($chatsGroups[$i]['chatMembers'] as $key => $member) {
-                        if($member->user_id == $currentUser->id){
-                            unset($chatsGroups[$i]['chatMembers'][$key]);
+                        // foreach ($chatsGroups[$i]['chatMembers'] as $key => $member) {
+                        //     if($member->user_id == $currentUser->id){
+                        //         unset($chatsGroups[$i]['chatMembers'][$key]);
+                        //     }
+                        // }
+                        if(isset($chatsGroups[$i]['chatMessages']) && isset($chatsGroups[$i]['chatMessages'][0])){
+                            $chatsGroups[$i]['lastMessage'] = $chatsGroups[$i]['chatMessages'][0]['text'];
+                        }else{
+                            $chatsGroups[$i]['lastMessage'] = 'No messages found';
                         }
-                    }
-                    if(isset($chatsGroups[$i]['chatMessages']) && isset($chatsGroups[$i]['chatMessages'][0])){
-                        $chatsGroups[$i]['lastMessage'] = $chatsGroups[$i]['chatMessages'][0]['text'];
-                    }else{
-                        $chatsGroups[$i]['lastMessage'] = 'No messages found';
-                    }
-                    unset($chatsGroups[$i]['chatMessages']);
+                        unset($chatsGroups[$i]['chatMessages']);
                 }
-
                 $result = $chatsGroups->toArray();
-                
-                $responseData['data'] = $result;
+                if($chatsGroups->count() > 0){
+                    $skip = ((int)$page - 1) * (int)$limit;
+                    $total = $limit + $skip;
+                    $chatsGroups = array_slice($result,$skip, $total);
+                }
+                $responseData['data'] = $chatsGroups;
                 $responseData['status'] = 200;
-                $responseData['message'] = 'Chat groups founded successfully';
+                $responseData['message'] = 'My Chats';
                 return $this->commonResponse($responseData, 200);
             } else {
                 $responseData['status'] = 500;

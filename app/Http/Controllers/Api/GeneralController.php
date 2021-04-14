@@ -480,6 +480,7 @@ class GeneralController extends Controller
                 'group_id' => 'required',
             ]);
             $currentUser = $request->get('user');
+            $limit = isset($request->limit) ? $request->limit : 10;
             if ($validator->fails()) {
                 $responseData['message'] = $validator->errors()->first();
                 return $this->commonResponse($responseData, 200);
@@ -493,10 +494,18 @@ class GeneralController extends Controller
                             $query->where('deleted_at',null)->select('id','group_name','group_image');
                         }])->whereHas('group',function($query){
                             $query->where('deleted_at',null);
-                        })->get();
+                        });
+                        $messageList = $messageList->paginate($limit);
+                        $results = $messageList->toJson();
+                        $results = json_decode($results);
+                        unset($results->last_page_url);
+                        unset($results->first_page_url);
+                        unset($results->next_page_url);
+                        unset($results->prev_page_url);
+                        unset($results->path);
                         $responseData['status'] = 200;
                         $responseData['message'] = "Success";
-                        $responseData['data'] = $messageList;
+                        $responseData['data'] = $results;
                         return $this->commonResponse($responseData, 200);
                     } else {
                         if($groupExists->is_single == 1){

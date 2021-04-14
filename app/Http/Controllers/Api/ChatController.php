@@ -162,7 +162,7 @@ class ChatController extends Controller
                     MessageReceivers::insert($messageReceiversData);
                 }
 
-                ChatGroup::where('id',$chatGroupId)->update(['updated_at' => date('Y-m-d H:i:s')]);
+                ChatGroup::where('id',$chatGroupId)->update(['last_updated' => date('Y-m-d H:i:s')]);
                 
                 DB::commit();
                 $responseData['status'] = 200;
@@ -206,10 +206,9 @@ class ChatController extends Controller
         }
         return $groupId;
     }
-
-     /**
+    /**
      * 
-     */
+    */
     public function myChats(Request $request){
         $responseData = array();
         $responseData['status'] = 0;
@@ -218,7 +217,7 @@ class ChatController extends Controller
         try{
 
             $currentUser = $request->get('user');
-            // dd($currentUser->id);
+            
             $userExist = User::select('id','status','username')
                             ->where('id',$currentUser->id)
                             ->where('status',1)
@@ -229,7 +228,7 @@ class ChatController extends Controller
                     $query->where('user_id', $currentUser->id);
                 })
                 ->where('deleted_at',null)
-                ->orderBy('updated_at','DESC')
+                ->orderBy('last_updated','DESC')
                 ->get();
 
                 // echo "<pre>";print_r($chatsGroups);exit;

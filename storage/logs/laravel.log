@@ -1,8 +1,0 @@
-[2021-04-11 18:18:59] local.INFO: ApiAccessible access middlewhere token:: pGDdWqWAhmganfz7mnjeOf6oCEDM1fKUBFqdw38FjZv3fp7TQ8ZrYG7NWU8N  
-[2021-04-11 18:18:59] local.INFO: API Request: {"group_id":"2","message":"testing grp 222","device_type":"1","device_id":"1234"}  
-[2021-04-11 18:19:06] local.INFO: ApiAccessible access middlewhere token:: pGDdWqWAhmganfz7mnjeOf6oCEDM1fKUBFqdw38FjZv3fp7TQ8ZrYG7NWU8N  
-[2021-04-11 18:19:06] local.INFO: API Request: []  
-[2021-04-11 18:19:28] local.INFO: ApiAccessible access middlewhere token:: pGDdWqWAhmganfz7mnjeOf6oCEDM1fKUBFqdw38FjZv3fp7TQ8ZrYG7NWU8N  
-[2021-04-11 18:19:28] local.INFO: API Request: {"group_id":"1","message":"hello every one","device_type":"1","device_id":"1234"}  
-[2021-04-11 18:19:34] local.INFO: ApiAccessible access middlewhere token:: pGDdWqWAhmganfz7mnjeOf6oCEDM1fKUBFqdw38FjZv3fp7TQ8ZrYG7NWU8N  
-[2021-04-11 18:19:34] local.INFO: API Request: []  

@@ -52,4 +52,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function firstHiMessage(){
+        return $this->hasMany('App\Models\FirstHiMessage','receiver_id');
+    }
 }

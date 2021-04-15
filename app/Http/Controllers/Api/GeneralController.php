@@ -119,6 +119,7 @@ class GeneralController extends Controller
                 $users->where('username','like','%'.$request->keyword.'%');
             }            
 
+            $users->withCount('firstHiMessage');
             $users = $users->paginate($limit);
             $results = $users->toJson();
             

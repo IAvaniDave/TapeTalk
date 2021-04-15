@@ -9,6 +9,7 @@ use App\Models\ChatGroup;
 use App\Models\ChatMember;
 use App\Models\ChatMessage;
 use App\Models\MessageReceivers;
+use App\Models\FirstHiMessage;
 use DB;
 use Validator;
 
@@ -27,7 +28,7 @@ class ChatController extends Controller
         DB::beginTransaction();
         try {
             $currentUser = $request->get('user');
-
+            $is_single = 0;
             // to check user is logged in or not
             if(!isset($currentUser) && empty($currentUser)){ 
                 $responseData['status'] = 401;
@@ -37,7 +38,7 @@ class ChatController extends Controller
             }
 
             $groupId = $request->group_id;
-
+            $newUserExist = null;
             //to check new user is exist in DB or not 
             if(isset($request->new_user_id)){
                 $where = [
@@ -45,7 +46,7 @@ class ChatController extends Controller
                     'status' => 1
                 ];
 
-                $newUserExist = User::select('id','status','email')->where($where)->first();
+                $newUserExist = User::select('id','status','email','username')->where($where)->first();
                 if(!isset($newUserExist) && empty($newUserExist)){
                     $responseData['status'] = 200;
                     $responseData['message'] = 'This new user is not exist';
@@ -125,6 +126,45 @@ class ChatController extends Controller
                 }
                 
                 $newGroup = 0;
+            }
+
+            $isHi = $request->is_hi;
+            // to check the first message is in single chat
+            if($newGroup == 0 && isset($isHi) && $is_single != 1){
+                $responseData['status'] = 200;
+                $responseData['message'] = 'You have already sent the first Hi message';
+                DB::rollback();
+                return $this->commonResponse($responseData, 200);
+            }
+            // dd($newGroup);
+            // dd($newGroup != 1 && isset($isHi) && $is_single == 1);
+            // to check already sent first message
+            if($newGroup != 1 && isset($isHi) && $is_single == 1){
+                $responseData['status'] = 200;
+                $responseData['message'] = 'You have already sent the first Hi message';
+                DB::rollback();
+                return $this->commonResponse($responseData, 200);
+            } else if($newGroup == 1) {
+                if((int)$isHi === 1){
+                    if(isset($newUserExist) && $newUserExist != null){
+                        $request->message = 'Hi '. $newUserExist->username;
+    
+                        $FirstHiMessageData = new FirstHiMessage();
+                        $FirstHiMessageData->sender_id = $currentUser->id;
+                        $FirstHiMessageData->receiver_id = $newUserExist->id;
+                        $FirstHiMessageData->save();
+                    } else {
+                        $responseData['status'] = 200;
+                        $responseData['message'] = 'Receiver not exist';
+                        DB::rollback();
+                        return $this->commonResponse($responseData, 200);
+                    }
+                } else {
+                    $responseData['status'] = 200;
+                    $responseData['message'] = 'For first hi message you need to pass as 1';
+                    DB::rollback();
+                    return $this->commonResponse($responseData, 200);
+                }
             }
 
             if($chatGroupId != null){

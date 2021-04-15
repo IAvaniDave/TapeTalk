@@ -4,4 +4,4 @@ ALTER TABLE `chat_groups` CHANGE `group_name` `group_name` VARCHAR(255) CHARACTE
 ALTER TABLE `chat_groups` CHANGE `group_image` `group_image` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
 
 /* 14-04-2021 */
-ALTER TABLE `users` CHANGE `is_hi` `is_hi` TINYINT(20) NULL DEFAULT '0' COMMENT ' 0 = no , 1 = yes';
+ALTER TABLE `chat_groups` ADD `last_updated` DATETIME NULL DEFAULT NULL AFTER `created_by`;

@@ -141,7 +141,7 @@ class UserController extends Controller
                 return $this->commonResponse($responseData, 200);
             } else {
 
-                $user = User::select('id','email','password','gender','status','logo','deleted_at')->where([
+                $user = User::select('id','email','username','ip_address','birth_date','password','gender','status','logo','deleted_at')->where([
                     'email'=> $request->email,
                     'deleted_at' => null,
                 ])->first();

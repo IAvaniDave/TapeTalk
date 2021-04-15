@@ -235,7 +235,7 @@ class GeneralController extends Controller
                                 $addGroup->group_name = $request->group_name;
                                 $addGroup->created_by = $currentUser->id;
                                 $addGroup->is_single = 2;
-                                $addGroup->group_image = (isset($request->group_image)) ? $groups_image : null;
+                                $addGroup->group_image = (isset($request->group_image)) ? $groups_image : "teamwork.png";
                                 $addGroup->save();
     
                                 // need to add chat members in chat group
@@ -362,7 +362,7 @@ class GeneralController extends Controller
                         $updatedData['group_name'] = $request->group_name;
                     }
                     if(isset($request->group_image)){
-                        if($isAdmin->group_image != null){
+                        if($isAdmin->group_image != null && $isAdmin->group_image != "teamwork.png"){
                             if (File::exists(public_path('images/groups/'.$isAdmin->group_image))) {
                                 File::delete(public_path('images/groups/'.$isAdmin->group_image));
                             }

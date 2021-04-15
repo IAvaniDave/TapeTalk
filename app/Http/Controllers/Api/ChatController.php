@@ -264,9 +264,13 @@ class ChatController extends Controller
                             ->where('status',1)
                             ->first();
             if(isset($userExist) && !empty($userExist)){
-                $chatsGroups = ChatGroup::select('id','group_name','group_image','is_single')->with(['chatMembers:id,group_id,user_id,deleted_at','chatMembers.user:id,username,logo,deleted_at','chatMessages:id,group_id,sender_id,text,updated_at'])
-                ->whereHas('chatMembers' , function($query) use ($currentUser){
+                $chatsGroups = ChatGroup::select('id','group_name','group_image','is_single')->with(['chatMembers:id,group_id,user_id,deleted_at','chatMembers.user' => function($query) use ($request){
+                    $query->select("id","username","logo","deleted_at");
+                },'chatMessages:id,group_id,sender_id,text,updated_at'])
+                ->whereHas('chatMembers' , function($query) use ($currentUser,$request){
                     $query->where('user_id', $currentUser->id);
+                })->whereHas('chatMembers.user',function($query1) use ($request){
+                    $query1->where('username', 'like', "%".$request->keyword."%");
                 })
                 ->where('deleted_at',null)
                 ->orderBy('last_updated','DESC')
@@ -303,6 +307,7 @@ class ChatController extends Controller
 
 
         } catch (\Exception $e) {
+            dd($e->getMessage());
             DB::rollback();
             $catchError = 'Error code: '.$e->getCode().PHP_EOL;
             $catchError .= 'Error file: '.$e->getFile().PHP_EOL;

@@ -57,4 +57,8 @@ class User extends Authenticatable
     public function firstHiMessage(){
         return $this->hasMany('App\Models\FirstHiMessage','receiver_id');
     }
+
+    public function isBlocked(){
+        return $this->hasMany('App\Models\BlockedUser','user_id');
+    }
 }

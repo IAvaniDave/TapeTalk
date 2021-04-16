@@ -205,6 +205,15 @@ class ChatController extends Controller
                 ChatGroup::where('id',$chatGroupId)->update(['last_updated' => date('Y-m-d H:i:s')]);
                 
                 DB::commit();
+
+                $results = array();
+                $results['id'] = $messages->id;
+                $results['sender_id'] = $messages->sender_id;
+                $results['text'] = $messages->text;
+                $results['group_id'] = $messages->group_id;
+                $results['created_at'] = $messages->created_at;
+
+                $responseData['data'] = (object)$results;
                 $responseData['status'] = 200;
                 $responseData['message'] = 'Message sent successfully';
                 return $this->commonResponse($responseData, 200);
@@ -263,14 +272,20 @@ class ChatController extends Controller
                             ->where('id',$currentUser->id)
                             ->where('status',1)
                             ->first();
+
             if(isset($userExist) && !empty($userExist)){
-                $chatsGroups = ChatGroup::select('id','group_name','group_image','is_single')->with(['chatMembers:id,group_id,user_id,deleted_at','chatMembers.user' => function($query) use ($request){
+                $chatsGroups = ChatGroup::select('id','group_name','group_image','is_single')->with(['chatMembers:id,group_id,user_id,deleted_at','chatMembers.user.isBlocked','unreadMessage' => function($q) use ($currentUser){
+                    $q->where('receiver_id',$currentUser->id);
+                },'chatMembers.user'=> function($query) use ($request){
                     $query->select("id","username","logo","deleted_at");
                 },'chatMessages:id,group_id,sender_id,text,updated_at'])
                 ->whereHas('chatMembers' , function($query) use ($currentUser,$request){
                     $query->where('user_id', $currentUser->id);
                 })->whereHas('chatMembers.user',function($query1) use ($request){
                     $query1->where('username', 'like', "%".$request->keyword."%");
+                })
+                ->wherehas('unreadMessage' , function($query) use ($currentUser){
+                    $query->where('receiver_id',$currentUser->id);
                 })
                 ->where('deleted_at',null)
                 ->orderBy('last_updated','DESC')
@@ -282,6 +297,24 @@ class ChatController extends Controller
                         //         unset($chatsGroups[$i]['chatMembers'][$key]);
                         //     }
                         // }
+                        if(isset($chatsGroups[$i]['unreadMessage']) && !empty($chatsGroups[$i]['unreadMessage'])){
+                            $chatsGroups[$i]['unreadMessageCout'] = count($chatsGroups[$i]['unreadMessage']);
+                            unset($chatsGroups[$i]['unreadMessage']);
+                        }
+
+                        if(isset($chatsGroups[$i]['chatMembers']) && !empty($chatsGroups[$i]['chatMembers'])){
+                             foreach ($chatsGroups[$i]['chatMembers'] as $key => $member) {
+                                 if(isset($member->user->isBlocked)){
+                                    if(count($member->user->isBlocked) == 0){
+                                        $member->user->is_blocked = 0;
+                                    }else{
+                                        $member->user->is_blocked = 1;
+                                    }
+                                    unset($member->user->isBlocked);
+                                }
+                            }
+                        }
+
                         if(isset($chatsGroups[$i]['chatMessages']) && isset($chatsGroups[$i]['chatMessages'][0])){
                             $chatsGroups[$i]['lastMessage'] = $chatsGroups[$i]['chatMessages'][0]['text'];
                         }else{
@@ -289,6 +322,7 @@ class ChatController extends Controller
                         }
                         unset($chatsGroups[$i]['chatMessages']);
                 }
+
                 $result = $chatsGroups->toArray();
                 if($chatsGroups->count() > 0){
                     $skip = ((int)$page - 1) * (int)$limit;

@@ -494,11 +494,13 @@ class GeneralController extends Controller
                 if(isset($groupExists) && !empty($groupExists)){
                     $membersExists = ChatMember::where(['deleted_at' => null,'group_id' => $request->group_id,'user_id' => $currentUser->id,'is_left' => 0])->first();
                     if(isset($membersExists) && !empty($membersExists)){
-                        $messageList = ChatMessage::select('id','group_id','sender_id','text')->where(['group_id' => $request->group_id])->with('user:id,username,email,logo,status,deleted_at')->with(['group' => function($query){
+                        $messageList = ChatMessage::select('id','group_id','sender_id','text','created_at')->where(['group_id' => $request->group_id])->with('user:id,username,email,logo,status,deleted_at')->with(['group' => function($query){
                             $query->where('deleted_at',null)->select('id','group_name','group_image');
                         }])->whereHas('group',function($query){
                             $query->where('deleted_at',null);
-                        });
+                        })
+                        ->orderBy('created_at','DESC');
+                        
                         $messageList = $messageList->paginate($limit);
                         $results = $messageList->toJson();
                         $results = json_decode($results);
@@ -581,6 +583,9 @@ class GeneralController extends Controller
         DB::beginTransaction();
         try{
             $currentUser = $request->get('user');
+
+            $update = $currentUser;
+
             $updatedData = [];
             if(isset($request->logo) && $request->file('logo') != ""){
                 if(($currentUser->gender == 1 && $currentUser->logo != "male.png") || ($currentUser->gender == 2 && $currentUser->logo != "female.png")){
@@ -595,16 +600,22 @@ class GeneralController extends Controller
                 $upload = public_path().'/images/users/';
                 $file->move($upload,$updatedLogo);
                 $updatedData['logo'] = $updatedLogo;
+                $update->logo = $updatedLogo;
             }
             if(isset($request->birth_date)){
                 $updatedData['birth_date'] = $request->birth_date;
+                $update->birth_date = $request->birth_date;
             }
             if(isset($request->username)){
                 $updatedData['username'] = $request->username;
+                $update->username = $request->username;
 
             }
-            $update = User::where('id',$currentUser->id)->update($updatedData);
+            
+            $update->save();
+
             DB::commit();
+            $responseData['data'] = $update;
             $responseData['status'] = 200;
             $responseData['message'] = 'User Details Edited Successfully';
             return $this->commonResponse($responseData, 200);
@@ -697,15 +708,15 @@ class GeneralController extends Controller
                         'deleted_at' => null,
                         'status' => 1,
                     ])->first();
-                    // echo "<pre>";print_r($user->toArray());
                 if(isset($user->id)){
+                    //generated new password;
                     $sentPassword = Str::random(8);
+                    //make as a hashing encypted
                     $newPassword = Hash::make($sentPassword);
-                    // echo($newPassword);
                     $user->password = $newPassword;
                     $user->save();
-                    // dd($user);
 
+                    //sending email to entered email address
                     $from_email = env('MAIL_FROM_ADDRESS');
                     Mail::send('emails.forgot-password', ['user' => $user , 'password' => $sentPassword], function ($message) use ($user , $from_email) {
                         $message->from($from_email, 'TapeTalk');

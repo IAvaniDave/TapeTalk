@@ -8,8 +8,11 @@ use App\Models\BlockedUser;
 use App\Models\ChatGroup;
 use App\Models\ChatMember;
 use App\Models\ChatMessage;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use App\User;
 use DB;
+use Mail;
 use Validator;
 use File;
 
@@ -615,6 +618,118 @@ class GeneralController extends Controller
 
             $code = ($e->getCode() != '')?$e->getCode():500;
             $responseData['message'] = "Something went wrong";
+            return $this->commonResponse($responseData, $code);
+        }
+    }
+
+    /**
+     * This function is users for changing the password from account setting after login
+     *
+     * @param Request $request = current_password, new_password
+     * @return void
+     */
+    public function changePassword(Request $request){
+        $responseData = array();
+        $responseData['status'] = 0;
+        $responseData['message'] = '';
+        $responseData['data'] = (object) [];
+
+        DB::beginTransaction();
+        try{
+            $currentUser = $request->get('user');
+            if($currentUser){
+                $validator = Validator::make($request->all(), [
+                    'current_password' => 'required',
+                    'new_password' => 'required|min:8',
+                ],[
+                    'current_password.required' => 'Please enter your current password',
+                    'new_password.required' => 'Please enter your new password',
+                ]);
+                if ($validator->fails()) {
+                    $responseData['message'] = $validator->errors()->first();
+                    DB::rollback();
+                    return $this->commonResponse($responseData, 200);
+                } else {
+                    if(Hash::check($request->current_password,$currentUser->password)){
+                        $currentUser->password = Hash::make($request->new_password);
+                        $currentUser->save();
+                        DB::commit();
+                        $responseData['message'] = 'Password changed successfully';
+                        $responseData['status'] = 1;
+                        return $this->commonResponse($responseData, 200);
+                    } else {
+                        DB::rollback();
+                        $responseData['message'] = 'Current password is not correct';
+                        return $this->commonResponse($responseData, 200);
+                    }
+                }
+            } else {
+                DB::rollback();
+                $responseData['message'] = trans('Current User not found');
+                return $this->commonResponse($responseData, 200);
+            }
+
+        } catch(Exception $e){
+            DB::rollback();
+            Log::emergency('Change Password catch exception:: Message:: '.$e->getMessage().' line:: '.$e->getLine().' Code:: '.$e->getCode().' file:: '.$e->getFile());
+            $code = ($e->getCode() != '')?$e->getCode():500;
+            $responseData['message'] = trans('common.something_went_wrong');
+            return $this->commonResponse($responseData, $code);
+        }
+    }
+
+    public function forgotPassword(Request $request){
+        $responseData = array();
+        $responseData['status'] = 0;
+        $responseData['message'] = '';
+        $responseData['data'] = (object) [];
+        try {
+            $validator = Validator::make($request->all(), [
+                'email' => ['required', 'string', 'email', 'max:255'],
+            ]);
+            if ($validator->fails()) {
+                $responseData['message'] = $validator->errors()->first();
+                return $this->commonResponse($responseData, 200);
+            } else {
+                $user = User::select('id','email', 'username', 'password' , 'status', 'gender', 'birth_date')
+                    ->where( [
+                        'email' => $request->email,
+                        'deleted_at' => null,
+                        'status' => 1,
+                    ])->first();
+                    // echo "<pre>";print_r($user->toArray());
+                if(isset($user->id)){
+                    $sentPassword = Str::random(8);
+                    $newPassword = Hash::make($sentPassword);
+                    // echo($newPassword);
+                    $user->password = $newPassword;
+                    $user->save();
+                    // dd($user);
+
+                    $from_email = env('MAIL_FROM_ADDRESS');
+                    Mail::send('emails.forgot-password', ['user' => $user , 'password' => $sentPassword], function ($message) use ($user , $from_email) {
+                        $message->from($from_email, 'TapeTalk');
+                        $message->to($user->email, $user->username)->subject('New password for your account!');
+                    });
+
+                    $responseData['status'] = 1;
+                    $responseData['message'] = "Email with new passowrd has been sent to your email address";
+                    return $this->commonResponse($responseData, 200);
+                }  else {
+                    $responseData['status'] = 404;
+                    $responseData['message'] = "Entered email address is not associated with our records";
+                    return $this->commonResponse($responseData, 200);
+                }
+            }
+        } catch (Exception $e){
+            $catchError = 'Error code: '.$e->getCode().PHP_EOL;
+            $catchError .= 'Error file: '.$e->getFile().PHP_EOL;
+            $catchError .= 'Error line: '.$e->getLine().PHP_EOL;
+            $catchError .= 'Error message: '.$e->getMessage().PHP_EOL;
+            \Log::emergency($catchError);
+
+            $code = ($e->getCode() != '')?$e->getCode():500;
+            $responseData['message'] = trans('common.something_went_wrong');
             return $this->commonResponse($responseData, $code);
         }
     }

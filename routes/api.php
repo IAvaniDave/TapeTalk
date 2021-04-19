@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', 'Api\UserController@register');
 Route::post('/login', 'Api\UserController@login');
 Route::post('/socialMediaLogin', 'Api\UserController@socialMediaLogin');
-// Route::post('/forgot-password', 'Api\GeneralController@forgotPassword');
+Route::post('/forgot-password', 'Api\GeneralController@forgotPassword');
 Route::group(['middleware' => ['api-access']], function () {
     Route::post('/details','Api\GeneralController@getUserDetails');
     Route::post('/edit-profile','Api\GeneralController@editUserProfile');

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -76,7 +76,7 @@
     </head>
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-        <script type="text/javascript" src="{{ asset('js/testSocket.js') }}"></script>
+        <script type="text/javascript" src="<?php echo e(asset('js/testSocket.js')); ?>"></script>
         <script type="text/javascript">
             socket.emit('joinroom', { event: 'chat-users', room: '1' });
 
@@ -87,19 +87,19 @@
            
         </script>
         <div class="">
-            @if (Route::has('login'))
+            <?php if(Route::has('login')): ?>
                 <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+                    <?php if(auth()->guard()->check()): ?>
+                        <a href="<?php echo e(url('/home')); ?>">Home</a>
+                    <?php else: ?>
+                        <a href="<?php echo e(route('login')); ?>">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+                        <?php if(Route::has('register')): ?>
+                            <a href="<?php echo e(route('register')); ?>">Register</a>
+                        <?php endif; ?>
+                    <?php endif; ?>
                 </div>
-            @endif
+            <?php endif; ?>
 
             <div class="container">
                 <div class="inbox_chat mt-5">
@@ -200,3 +200,4 @@
         
     </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\Laravel\TapeTalkGit\TapeTalk\resources\views/welcome.blade.php ENDPATH**/ ?>

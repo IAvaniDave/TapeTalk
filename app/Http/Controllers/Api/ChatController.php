@@ -12,6 +12,7 @@ use App\Models\MessageReceivers;
 use App\Models\FirstHiMessage;
 use DB;
 use Validator;
+use App\Events\ChatUsersEvent;
 
 class ChatController extends Controller
 {
@@ -145,7 +146,7 @@ class ChatController extends Controller
                 DB::rollback();
                 return $this->commonResponse($responseData, 200);
             } else if($newGroup == 1) {
-                if((int)$isHi === 1){
+                if(isset($isHi) && (int)$isHi === 1){
                     if(isset($newUserExist) && $newUserExist != null){
                         $request->message = 'Hi '. $newUserExist->username;
     
@@ -159,7 +160,8 @@ class ChatController extends Controller
                         DB::rollback();
                         return $this->commonResponse($responseData, 200);
                     }
-                } else {
+                    
+                } else if(isset($isHi) && (int)$isHi === 0){
                     $responseData['status'] = 200;
                     $responseData['message'] = 'For first hi message you need to pass as 1';
                     DB::rollback();
@@ -205,6 +207,26 @@ class ChatController extends Controller
                 ChatGroup::where('id',$chatGroupId)->update(['last_updated' => date('Y-m-d H:i:s')]);
                 
                 DB::commit();
+
+                /**
+                 * ChatUsersEvent is for, if one side user will send the message then other member will receive the message instantly.
+                */
+
+                $chatMessageData = [
+                    'group_id' => $chatGroupId,
+                    'user_id' => $currentUser->id,
+                    'message' => $message,
+                    'message_id' => $messages->id,
+                ];
+                /**
+                 * socket emit
+                */
+                $socketDataCM = array(
+                    'event' => 'chatMessageAdd',
+                    'data' => (object)$chatMessageData,
+                );
+                
+                event(new ChatUsersEvent($socketDataCM));
 
                 $results = array();
                 $results['id'] = $messages->id;

@@ -136,9 +136,6 @@ class ChatController extends Controller
                 DB::rollback();
                 return $this->commonResponse($responseData, 200);
             }
-            // dd($newGroup);
-            // dd($newGroup != 1 && isset($isHi) && $is_single == 1);
-            // to check already sent first message
             if($newGroup != 1 && isset($isHi) && $is_single == 1){
                 $responseData['status'] = 200;
                 $responseData['message'] = 'You have already sent the first Hi message';
@@ -160,10 +157,10 @@ class ChatController extends Controller
                         return $this->commonResponse($responseData, 200);
                     }
                 } else {
-                    $responseData['status'] = 200;
-                    $responseData['message'] = 'For first hi message you need to pass as 1';
-                    DB::rollback();
-                    return $this->commonResponse($responseData, 200);
+                    // $responseData['status'] = 200;
+                    // $responseData['message'] = 'For first hi message you need to pass as 1';
+                    // DB::rollback();
+                    // return $this->commonResponse($responseData, 200);
                 }
             }
 

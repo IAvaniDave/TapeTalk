@@ -8,6 +8,7 @@ use App\Models\BlockedUser;
 use App\Models\ChatGroup;
 use App\Models\ChatMember;
 use App\Models\ChatMessage;
+use App\Models\FirstHiMessage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\User;
@@ -120,10 +121,22 @@ class GeneralController extends Controller
             
             if(isset($request->keyword)){
                 $users->where('username','like','%'.$request->keyword.'%');
-            }            
-
-            $users->withCount('firstHiMessage');
+            }
             $users = $users->paginate($limit);
+
+            foreach($users as $user){
+                $members = [];
+                $members_array = array();
+                $FirstHiMessageData = FirstHiMessage::where(['sender_id' => $currentUser->id,'receiver_id' => $user->id])->count();
+                $user->first_hi_message_count = $FirstHiMessageData;
+                $members_array[] = $user->id; 
+                $members_array[] = $currentUser->id; 
+
+                $groupId  = app('App\Http\Controllers\Api\ChatController')->getGroupId($members_array);
+                if(!empty($groupId) &&$user->first_hi_message_count == 0){
+                    $user->first_hi_message_count = -1;
+                }
+            }
             $results = $users->toJson();
             
             // dd($users);
@@ -620,6 +633,7 @@ class GeneralController extends Controller
             $responseData['message'] = 'User Details Edited Successfully';
             return $this->commonResponse($responseData, 200);
         } catch(Exception $e){
+            \Log::emergency($e->getMessage());
             DB::rollback();
             $catchError = 'Error code: '.$e->getCode().PHP_EOL;
             $catchError .= 'Error file: '.$e->getFile().PHP_EOL;

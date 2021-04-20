@@ -6,15 +6,14 @@
 <body>
 
 Hello <strong><?php echo e($user['username']); ?></strong> ,<br>
+<br>
 
 <p>Use this new password for login : <strong><?php echo e($password); ?></strong> <p>
 
 <br>
 <br>
-<br>
 
 <p>Thank you,</p>
-<br>
 <br>
 <strong>Team TapeTalk</strong>
 </body>

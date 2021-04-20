@@ -9,6 +9,11 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
 
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" />
+
         <!-- Styles -->
         <style>
             html, body {
@@ -57,14 +62,31 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
+            .chat_people img{
+                height: 50px;
+                width: 50px;
+            }
+            .chat_people{
+                display: flex;
+            }
             .m-b-md {
                 margin-bottom: 30px;
             }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+        <script type="text/javascript" src="{{ asset('js/testSocket.js') }}"></script>
+        <script type="text/javascript">
+            socket.emit('joinroom', { event: 'chat-users', room: '1' });
+
+            
+            socket.on('connect', () => {
+                socket.emit('joinroom', { event: 'chat-users', room: '1' });
+            });
+           
+        </script>
+        <div class="">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -79,22 +101,102 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+            <div class="container">
+                <div class="inbox_chat mt-5">
+                    <div class="chat_list active_chat">
+                      <div class="chat_people">
+                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                        <div class="chat_ib">
+                          <h6>Sunil Rajput <span class="chat_date">Dec 25</span></h6>
+                          <p>Test, which is a new approach to have all solutions 
+                            astrology under one roof.</p>
+                        </div>
+                        <div class="send-message">
+                            <button type="button" class="btn btn-primary btn-sm" data-user="1" data-message="hi I am user 1">Send</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="chat_list">
+                      <div class="chat_people">
+                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                        <div class="chat_ib">
+                          <h6>Sunil Rajput <span class="chat_date">Dec 25</span></h6>
+                          <p>Test, which is a new approach to have all solutions 
+                            astrology under one roof.</p>
+                        </div>
+                        <div class="send-message">
+                            <button type="button" class="btn btn-primary btn-sm" data-user="2" data-message="hi I am user 2">Send</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="chat_list">
+                      <div class="chat_people">
+                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                        <div class="chat_ib">
+                          <h6>Sunil Rajput <span class="chat_date">Dec 25</span></h6>
+                          <p>Test, which is a new approach to have all solutions 
+                            astrology under one roof.</p>
+                        </div>
+                        <div class="send-message">
+                            <button type="button" class="btn btn-primary btn-sm" data-user="3" data-message="hi I am user 3">Send</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="chat_list">
+                      <div class="chat_people">
+                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                        <div class="chat_ib">
+                          <h6>Sunil Rajput <span class="chat_date">Dec 25</span></h6>
+                          <p>Test, which is a new approach to have all solutions 
+                            astrology under one roof.</p>
+                        </div>
+                        <div class="send-message">
+                            <button type="button" class="btn btn-primary btn-sm" data-user="4" data-message="hi I am user 4">Send</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="chat_list">
+                      <div class="chat_people">
+                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                        <div class="chat_ib">
+                          <h6>Sunil Rajput <span class="chat_date">Dec 25</span></h6>
+                          <p>Test, which is a new approach to have all solutions 
+                            astrology under one roof.</p>
+                        </div>
+                        <div class="send-message">
+                            <button type="button" class="btn btn-primary btn-sm" data-user="5" data-message="hi I am user 5">Send</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="chat_list">
+                      <div class="chat_people">
+                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                        <div class="chat_ib">
+                          <h6>Sunil Rajput <span class="chat_date">Dec 25</span></h6>
+                          <p>Test, which is a new approach to have all solutions 
+                            astrology under one roof.</p>
+                        </div>
+                        <div class="send-message">
+                            <button type="button" class="btn btn-primary btn-sm" data-user="6" data-message="hi I am user 6">Send</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="chat_list">
+                      <div class="chat_people">
+                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                        <div class="chat_ib">
+                          <h6>Sunil Rajput <span class="chat_date">Dec 25</span></h6>
+                          <p>Test, which is a new approach to have all solutions 
+                            astrology under one roof.</p>
+                        </div>
+                        <div class="send-message">
+                            <button type="button" class="btn btn-primary btn-sm" data-user="7" data-message="hi I am user 7">Send</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
         </div>
+        
     </body>
 </html>

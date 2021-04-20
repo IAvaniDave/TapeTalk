@@ -200,4 +200,4 @@
         
     </body>
 </html>
-<?php /**PATH C:\xampp\htdocs\TapeTalk\resources\views/welcome.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\Laravel\TapeTalkGit\TapeTalk\resources\views/welcome.blade.php ENDPATH**/ ?>

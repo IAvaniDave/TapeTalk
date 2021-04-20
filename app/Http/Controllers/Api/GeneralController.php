@@ -439,12 +439,12 @@ class GeneralController extends Controller
                 DB::rollback();
                 return $this->commonResponse($responseData, 200);
             } else {
-                if($currentUser->id == $request->user_id){
-                    DB::rollback();
-                    $responseData['message'] = "You cannot remove yourself";
-                    $responseData['code'] = 400;
-                    return $this->commonResponse($responseData, 200);
-                }
+                // if($currentUser->id == $request->user_id){
+                //     DB::rollback();
+                //     $responseData['message'] = "You cannot remove yourself";
+                //     $responseData['code'] = 400;
+                //     return $this->commonResponse($responseData, 200);
+                // }
                 // group exist with current user and also he/she is admin in that group.
                 $groupExists = ChatGroup::where(['id' => $request->group_id,'is_single' => 2,'deleted_at' => null,'created_by' => $currentUser->id])->first();
                 if(isset($groupExists) && !empty($groupExists)){
@@ -622,7 +622,11 @@ class GeneralController extends Controller
             if(isset($request->username)){
                 $updatedData['username'] = $request->username;
                 $update->username = $request->username;
+            }
 
+            if(isset($request->gender)){
+                $updatedData['gender'] = (int)$request->gender;
+                $update->gender = (int)$request->gender;
             }
             
             $update->save();

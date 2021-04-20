@@ -214,7 +214,8 @@ class UserController extends Controller
                     $user->username = $username;
                     $user->email       = $email;
                     $user->password    = Hash::make(Str::random(8));
-                    $user->logo    = null;
+                    $user->logo    =  'male.png';
+                    $user->gender    =  1;
                     $user->provider_name = $social;
                     $user->provider_id = $provider_id;
                     $user->ip_address = \Request::ip();
@@ -300,6 +301,33 @@ class UserController extends Controller
 
             $code = ($e->getCode() != '')?$e->getCode():500;
             $responseData['message'] = "Something went wrong";
+            return $this->commonResponse($responseData, $code);
+        }
+    }
+
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function logout(Request $request) {
+        $responseData = array();
+        $responseData['status'] = 0;
+        $responseData['message'] = '';
+        $responseData['data'] = (object) [];
+        try {
+            $token = $request->bearerToken();
+            $execute = DeviceToken::Where(['api_token' => $token])->delete(); 
+
+            $responseData['status'] = 200;
+            $responseData['message'] = 'Logged Out Successfully';
+            return $this->commonResponse($responseData, 200);
+        } catch (Exception $e){
+            
+            Log::emergency('logout catch exception:: Message:: '.$e->getMessage().' line:: '.$e->getLine().' Code:: '.$e->getCode().' file:: '.$e->getFile());
+
+            $code = ($e->getCode() != '')?$e->getCode():500;
+            $responseData['message'] = trans('common.something_went_wrong');
             return $this->commonResponse($responseData, $code);
         }
     }

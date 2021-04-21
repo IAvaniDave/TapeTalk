@@ -11,7 +11,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 
-class ChatUsersEvent
+class ChatUsersEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -45,7 +45,7 @@ class ChatUsersEvent
     public function broadcastWith()
     {
         \Log::info("broadcastWith");
-        \Log::info($data);
+        \Log::info($this->data);
         return $this->data;
     }
 }

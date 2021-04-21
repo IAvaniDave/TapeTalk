@@ -12,7 +12,7 @@ use App\Models\MessageReceivers;
 use App\Models\FirstHiMessage;
 use DB;
 use Validator;
-// use App\Events\ChatUsersEvent;
+use App\Events\ChatUsersEvent;
 
 class ChatController extends Controller
 {
@@ -204,25 +204,25 @@ class ChatController extends Controller
                 
                 DB::commit();
 
-                // /**
-                //  * ChatUsersEvent is for, if one side user will send the message then other member will receive the message instantly.
-                // */
+                /**
+                * ChatUsersEvent is for, if one side user will send the message then other member will receive the message instantly.
+                */
 
-                // $chatMessageData = [
-                //     'group_id' => $chatGroupId,
-                //     'user_id' => $currentUser->id,
-                //     'message' => $message,
-                //     'message_id' => $messages->id,
-                // ];
-                // /**
-                //  * socket emit
-                // */
-                // $socketDataCM = array(
-                //     'event' => 'chatMessageAdd',
-                //     'data' => (object)$chatMessageData,
-                // );
+                $chatMessageData = [
+                    'group_id' => $chatGroupId,
+                    'user_id' => $currentUser->id,
+                    'message' => $message,
+                    'message_id' => $messages->id,
+                ];
+                /**
+                 * socket emit
+                */
+                $socketDataCM = array(
+                    'event' => 'chatMessageAdd',
+                    'data' => (object)$chatMessageData,
+                );
                 
-                // event(new ChatUsersEvent($socketDataCM));
+                event(new ChatUsersEvent($socketDataCM));
 
                 $results = array();
                 $results['id'] = $messages->id;

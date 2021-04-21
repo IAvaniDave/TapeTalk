@@ -34,26 +34,39 @@ httpServer.listen(port, () => {
     console.log('HTTP Server running on port' + port);
 });
 
-redis.subscribe('chat-channel');
+// redis.subscribe('chat-channel');
+redis.subscribe('chat-channel', function () {
+    console.log('Redis: message-channel subscribed');
+});
 
 redis.on('message', function (channel, message) {
-    message = JSON.parse(message);
-    console.log(message, 'message');
-    console.log(channel, 'message - channel');
-    console.log(message.data, 'message');
-    // if (message.data.event == 'chatMessageAdd') {
-    //     // console.log("ifffffffff");
-    //     io.sockets.to("chat-users-" + message.data.data.group_id).emit(channel + ':' + message.data.event, message.data.data);
-    // }
+    try {
+        message = JSON.parse(message);
+        console.log(message, 'message');
+        console.log(channel, 'message - channel');
+        console.log(message.data, 'message');
+        // if (message.data.event == 'chatMessageAdd') {
+        //     // console.log("ifffffffff");
+        //     io.sockets.to("chat-users-" + message.data.data.group_id).emit(channel + ':' + message.data.event, message.data.data);
+        // }
+    } catch (error) {
+        console.log('[error]', 'join room :', error);
+    }
 });
 
 io.on('connection', (socket) => {
-    console.log("socket connected",socket.id);
+    try {
+        console.log("socket connected",socket.id);
         socket.on('joinroom', (data) => {
             console.log(data, 'socket data');
             socket.join(data.room);
             if (data.event == 'chat-users') {
+                console.log("join chat-users");
                 socket.join("chat-users-" + data.room);
             }
         })
+    } catch (e) {
+        console.log('[error]', 'join room :', e);
+        // socket.emit('error', 'couldnt perform requested action');
+    }
 });

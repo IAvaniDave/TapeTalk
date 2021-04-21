@@ -192,7 +192,7 @@
         <script type="text/javascript">
               socket.emit('joinroom', { event: 'chat-users', room: 1 });
               socket.on('connect', () => {
-                  socket.emit('joinroom', { event: 'chat-users', room: '1' });
+                socket.emit('joinroom', { event: 'chat-users', room: 1 });
               });
              
           </script>

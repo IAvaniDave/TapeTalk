@@ -19,6 +19,7 @@ Route::post('/socialMediaLogin', 'Api\UserController@socialMediaLogin');
 Route::post('/forgot-password', 'Api\GeneralController@forgotPassword');
 Route::group(['middleware' => ['api-access']], function () {
     Route::post('/details','Api\GeneralController@getUserDetails');
+    Route::post('logout', 'Api\UserController@logout');
     Route::post('/edit-profile','Api\GeneralController@editUserProfile');
     Route::post('/block-user','Api\GeneralController@blockUser');
     Route::post('/users-list','Api\GeneralController@usersList');

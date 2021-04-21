@@ -77,15 +77,7 @@
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
         <script type="text/javascript" src="{{ asset('js/testSocket.js') }}"></script>
-        <script type="text/javascript">
-            socket.emit('joinroom', { event: 'chat-users', room: '1' });
-
-            
-            socket.on('connect', () => {
-                socket.emit('joinroom', { event: 'chat-users', room: '1' });
-            });
-           
-        </script>
+        
         <div class="">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -197,6 +189,12 @@
                   </div>
             </div>
         </div>
-        
+        <script type="text/javascript">
+              socket.emit('joinroom', { event: 'chat-users', room: 1 });
+              socket.on('connect', () => {
+                  socket.emit('joinroom', { event: 'chat-users', room: '1' });
+              });
+             
+          </script>
     </body>
 </html>

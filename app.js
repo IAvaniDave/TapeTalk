@@ -6,22 +6,11 @@ const http = require('http');
 // create new express app and save it as "app"
 const app = express();
 app.use(cors());
-app.use(express.json())
+// app.use(express.json());
 
 const httpServer = http.createServer(app);
 
 const io = require('socket.io')(httpServer);
-// const io = require("socket.io")(httpServer, {
-//     handlePreflightRequest: (req, res) => {
-//         const headers = {
-//             "Access-Control-Allow-Headers": "Content-Type, Authorization",	
-//             "Access-Control-Allow-Origin": "*", // req.headers.origin, //or the specific origin you want to give access to,
-//             "Access-Control-Allow-Credentials": true
-//         };
-//         res.writeHead(200, headers);
-//         res.end();
-//     }
-// });
 // uncommment below line whenever need to upload the code on server.
 // const io = require('socket.io')(httpServer, {path: '/nodeapp/socket.io/'});
 
@@ -30,13 +19,19 @@ app.get('*', (req, res) => res.send('Socket is working. You requested the follow
 const dotenv = require('dotenv');
 dotenv.config();
 var hostname = '0.0.0.0';// process.env.NODE_SERVER_HOST;
-var port = process.env.NODE_SERVER_PORT;
+var port = 7000;
+// var port = process.env.NODE_SERVER_PORT;
 console.log("portport",port);
 console.log("host", process.env.REDIS_HOST);
 var Redis = require('ioredis');
 var redis = new Redis({
     port: process.env.REDIS_PORT,               // replace with your port
     host: process.env.REDIS_HOST,        // replace with your hostanme or IP address
+});
+
+
+httpServer.listen(port, () => {
+    console.log('HTTP Server running on port' + port);
 });
 
 redis.subscribe('chat-channel');
@@ -53,9 +48,12 @@ redis.on('message', function (channel, message) {
 });
 
 io.on('connection', (socket) => {
-    console.log("socketttttt conn",socket);
-});
-
-httpServer.listen(port, () => {
-    console.log('HTTP Server running on port' + port);
+    console.log("socket connected",socket.id);
+        socket.on('joinroom', (data) => {
+            console.log(data, 'socket data');
+            socket.join(data.room);
+            if (data.event == 'chat-users') {
+                socket.join("chat-users-" + data.room);
+            }
+        })
 });

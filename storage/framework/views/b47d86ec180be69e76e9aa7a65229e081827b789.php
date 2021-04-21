@@ -77,15 +77,7 @@
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
         <script type="text/javascript" src="<?php echo e(asset('js/testSocket.js')); ?>"></script>
-        <script type="text/javascript">
-            socket.emit('joinroom', { event: 'chat-users', room: '1' });
-
-            
-            socket.on('connect', () => {
-                socket.emit('joinroom', { event: 'chat-users', room: '1' });
-            });
-           
-        </script>
+        
         <div class="">
             <?php if(Route::has('login')): ?>
                 <div class="top-right links">
@@ -197,7 +189,13 @@
                   </div>
             </div>
         </div>
-        
+        <script type="text/javascript">
+              socket.emit('joinroom', { event: 'chat-users', room: 1 });
+              socket.on('connect', () => {
+                  socket.emit('joinroom', { event: 'chat-users', room: '1' });
+              });
+             
+          </script>
     </body>
 </html>
 <?php /**PATH C:\xampp\htdocs\Laravel\TapeTalkGit\TapeTalk\resources\views/welcome.blade.php ENDPATH**/ ?>

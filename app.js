@@ -5,7 +5,7 @@ const http = require('http');
 
 // create new express app and save it as "app"
 const app = express();
-app.use(cors());
+app.use(cors({}));
 // app.use(express.json());
 
 const httpServer = http.createServer(app);

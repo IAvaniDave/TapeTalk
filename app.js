@@ -45,10 +45,9 @@ redis.on('message', function (channel, message) {
         console.log(message, 'message');
         console.log(channel, 'message - channel');
         console.log(message.data, 'message');
-        // if (message.data.event == 'chatMessageAdd') {
-        //     // console.log("ifffffffff");
-        //     io.sockets.to("chat-users-" + message.data.data.group_id).emit(channel + ':' + message.data.event, message.data.data);
-        // }
+        if (message.data.event == 'chatMessageAdd') {
+            io.sockets.to("chat-users-" + message.data.data.group_id).emit(channel + ':' + message.data.event, message.data.data);
+        }
     } catch (error) {
         console.log('[error]', 'join room :', error);
     }

@@ -1,0 +1,200 @@
+[2021-04-21 18:31:19] local.INFO: ApiAccessible access middlewhere token:: XPwIuepMWquLtSRB6ktBsO2WLVZKBewR7FdPDJs349b9c7265gK4NLO0HvaO  
+[2021-04-21 18:31:19] local.INFO: API Request: {"group_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
+[2021-04-21 18:31:19] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 1,
+     'user_id' => 2,
+     'message' => '"hiii"',
+     'message_id' => 51,
+  )),
+)  
+[2021-04-21 18:31:19] local.INFO: broadcastWith  
+[2021-04-21 18:31:19] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 1,
+     'user_id' => 2,
+     'message' => '"hiii"',
+     'message_id' => 51,
+  )),
+)  
+[2021-04-21 18:31:19] local.INFO: listenderrrr  
+[2021-04-21 18:35:08] local.INFO: ApiAccessible access middlewhere token:: XPwIuepMWquLtSRB6ktBsO2WLVZKBewR7FdPDJs349b9c7265gK4NLO0HvaO  
+[2021-04-21 18:35:08] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
+[2021-04-21 18:35:08] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 1,
+     'user_id' => 2,
+     'message' => '"hiii"',
+     'message_id' => 52,
+  )),
+)  
+[2021-04-21 18:35:08] local.INFO: broadcastWith  
+[2021-04-21 18:35:08] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 1,
+     'user_id' => 2,
+     'message' => '"hiii"',
+     'message_id' => 52,
+  )),
+)  
+[2021-04-21 18:35:08] local.INFO: listenderrrr  
+[2021-04-21 18:35:55] local.INFO: ApiAccessible access middlewhere token:: XPwIuepMWquLtSRB6ktBsO2WLVZKBewR7FdPDJs349b9c7265gK4NLO0HvaO  
+[2021-04-21 18:35:55] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
+[2021-04-21 18:35:55] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 1,
+     'user_id' => 2,
+     'message' => '"hiii"',
+     'message_id' => 53,
+  )),
+)  
+[2021-04-21 18:35:55] local.INFO: broadcastWith  
+[2021-04-21 18:35:55] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 1,
+     'user_id' => 2,
+     'message' => '"hiii"',
+     'message_id' => 53,
+  )),
+)  
+[2021-04-21 18:35:55] local.INFO: listenderrrr  
+[2021-04-21 18:38:07] local.INFO: ApiAccessible access middlewhere token:: XPwIuepMWquLtSRB6ktBsO2WLVZKBewR7FdPDJs349b9c7265gK4NLO0HvaO  
+[2021-04-21 18:38:07] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
+[2021-04-21 18:38:07] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 1,
+     'user_id' => 2,
+     'message' => '"hiii"',
+     'message_id' => 54,
+  )),
+)  
+[2021-04-21 18:38:07] local.INFO: broadcastWith  
+[2021-04-21 18:38:07] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 1,
+     'user_id' => 2,
+     'message' => '"hiii"',
+     'message_id' => 54,
+  )),
+)  
+[2021-04-21 18:38:07] local.INFO: listenderrrr  
+[2021-04-22 16:56:20] local.INFO: ApiAccessible access middlewhere token:: SFTvhUYNZ5NLatVcRWTNi3Wp4j0srn3H2g0hPt37tCb9faZHAjoG95NXYqEQ  
+[2021-04-22 16:56:20] local.INFO: API Request: {"new_user_id":"3","message":"hello 11"}  
+[2021-04-22 16:56:30] local.INFO: userLoginSuccessResponse ::Array
+(
+    [fcm_token] => 
+    [device_type] => 1
+)
+  
+[2021-04-22 16:56:38] local.INFO: ApiAccessible access middlewhere token:: uEqbAXXKgJX7jwUoFNnuTmSrf4rvswrYtjNAe98LEhvCmIZvyF6i8posS3vY  
+[2021-04-22 16:56:38] local.INFO: API Request: {"new_user_id":"3","message":"hello 11"}  
+[2021-04-22 16:56:38] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 10,
+     'user_id' => 7,
+     'message' => 'hello 11',
+     'message_id' => 16,
+  )),
+)  
+[2021-04-22 16:56:38] local.INFO: broadcastWith  
+[2021-04-22 16:56:38] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 10,
+     'user_id' => 7,
+     'message' => 'hello 11',
+     'message_id' => 16,
+  )),
+)  
+[2021-04-22 16:56:38] local.INFO: listenderrrr  
+[2021-04-22 17:11:00] local.INFO: ApiAccessible access middlewhere token:: uEqbAXXKgJX7jwUoFNnuTmSrf4rvswrYtjNAe98LEhvCmIZvyF6i8posS3vY  
+[2021-04-22 17:11:00] local.INFO: API Request: {"new_user_id":"3","message":"hello 11"}  
+[2021-04-22 17:11:00] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 10,
+     'user_id' => 7,
+     'message' => 'hello 11',
+     'message_id' => 17,
+  )),
+)  
+[2021-04-22 17:11:00] local.INFO: broadcastWith  
+[2021-04-22 17:11:00] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 10,
+     'user_id' => 7,
+     'message' => 'hello 11',
+     'message_id' => 17,
+  )),
+)  
+[2021-04-22 17:11:00] local.INFO: listenderrrr  
+[2021-04-22 17:25:24] local.INFO: ApiAccessible access middlewhere token:: uEqbAXXKgJX7jwUoFNnuTmSrf4rvswrYtjNAe98LEhvCmIZvyF6i8posS3vY  
+[2021-04-22 17:25:24] local.INFO: API Request: {"new_user_id":"3","message":"hello 11"}  
+[2021-04-22 17:25:24] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 10,
+     'user_id' => 7,
+     'message' => 'hello 11',
+     'message_id' => 18,
+  )),
+)  
+[2021-04-22 17:25:24] local.INFO: broadcastWith  
+[2021-04-22 17:25:24] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 10,
+     'user_id' => 7,
+     'message' => 'hello 11',
+     'message_id' => 18,
+  )),
+)  
+[2021-04-22 17:25:24] local.INFO: listenderrrr  
+[2021-04-22 17:38:48] local.INFO: ApiAccessible access middlewhere token:: uEqbAXXKgJX7jwUoFNnuTmSrf4rvswrYtjNAe98LEhvCmIZvyF6i8posS3vY  
+[2021-04-22 17:38:48] local.INFO: API Request: {"new_user_id":"3","message":"hello 11"}  
+[2021-04-22 17:38:48] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 10,
+     'user_id' => 7,
+     'message' => 'hello 11',
+     'message_id' => 19,
+  )),
+)  
+[2021-04-22 17:38:48] local.INFO: broadcastWith  
+[2021-04-22 17:38:48] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'group_id' => 10,
+     'user_id' => 7,
+     'message' => 'hello 11',
+     'message_id' => 19,
+  )),
+)  
+[2021-04-22 17:38:48] local.INFO: listenderrrr  

@@ -6,7 +6,6 @@ const http = require('http');
 // create new express app and save it as "app"
 const app = express();
 app.use(cors({}));
-// app.use(express.json());
 
 const httpServer = http.createServer(app);
 
@@ -21,8 +20,6 @@ dotenv.config();
 var hostname = '0.0.0.0';// process.env.NODE_SERVER_HOST;
 var port = 7000;
 // var port = process.env.NODE_SERVER_PORT;
-console.log("portport",port);
-console.log("host", process.env.REDIS_HOST);
 var Redis = require('ioredis');
 var redis = new Redis({
     port: process.env.REDIS_PORT,               // replace with your port
@@ -42,8 +39,6 @@ redis.subscribe('chat-channel', function () {
 redis.on('message', function (channel, message) {
     try {
         message = JSON.parse(message);
-        console.log(message, 'message');
-        console.log(channel, 'message - channel');
         console.log(message.data, 'message');
         if (message.data.event == 'chatMessageAdd') {
             io.sockets.to("chat-users-" + message.data.data.group_id).emit(channel + ':' + message.data.event, message.data.data);
@@ -57,10 +52,8 @@ io.on('connection', (socket) => {
     try {
         console.log("socket connected",socket.id);
         socket.on('joinroom', (data) => {
-            console.log(data, 'socket data');
             socket.join(data.room);
             if (data.event == 'chat-users') {
-                console.log("join chat-users");
                 socket.join("chat-users-" + data.room);
             }
         })

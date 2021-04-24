@@ -57,6 +57,28 @@ io.on('connection', (socket) => {
                 socket.join("chat-users-" + data.room);
             }
         })
+        socket.on('speaking',(data) => {
+            // console.log("socket data typing",data);
+            if (data.event == 'message-speaking') {
+                console.log("in if","chat-users-" + data.groupId);
+                // socket.join("message-typing-" + data.room);
+                socket.to("chat-users-" + data.groupId).emit('typing', data);
+            }
+            //  else if(data.event == 'typing-stop'){
+            //     socket.to("chat-users-" + data.groupId).emit('typing', data);
+            // }
+        })
+        socket.on('typing',(data) => {
+            // console.log("socket data typing",data);
+            if (data.event == 'message-typing') {
+                console.log("in if","chat-users-" + data.groupId);
+                // socket.join("message-typing-" + data.room);
+                socket.to("chat-users-" + data.groupId).emit('typing', data);
+            }
+            //  else if(data.event == 'typing-stop'){
+            //     socket.to("chat-users-" + data.groupId).emit('typing', data);
+            // }
+        })
     } catch (e) {
         console.log('[error]', 'join room :', e);
         // socket.emit('error', 'couldnt perform requested action');

@@ -30,6 +30,7 @@ Route::group(['middleware' => ['api-access']], function () {
     Route::post('/message-list','Api\GeneralController@messageList');
     Route::post('/my-chats','Api\ChatController@myChats');
     Route::post('/change-password','Api\GeneralController@changePassword');
+    Route::post('/mark-as-read','Api\ChatController@markAsRead');
 });
 Route::get('/test' , function (){
     return "API is working";

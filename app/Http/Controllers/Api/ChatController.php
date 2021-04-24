@@ -371,4 +371,58 @@ class ChatController extends Controller
             return $this->commonResponse($responseData, 500);
         }
     }
+
+    /**
+     * ark as reas
+     */
+    public function markAsRead(Request $request){
+        $responseData = array();
+        $responseData['status'] = 0;
+        $responseData['message'] = '';
+        $responseData['data'] = (object) [];
+        try {
+            
+            $currentUser = $request->get('user');
+
+            $group_id = $request->group_id;
+            $message_id = $request->message_id;
+            $receiver_id = $currentUser->id;
+
+            DB::beginTransaction();
+            $where = [
+                'group_id' => $group_id,
+                'receiver_id' => $receiver_id,
+                'message_id' => $message_id,
+                'is_read' => 0
+            ];
+            
+            $messageReceiver = MessageReceivers::where($where)->first();
+
+            if(isset($messageReceiver) && !empty($messageReceiver)){
+                MessageReceivers::where('id',$messageReceiver->id)->update(['is_read' => 1]);
+                DB::commit();
+                $responseData['status'] = 200;
+                $responseData['message'] = 'The count is updated';
+                return $this->commonResponse($responseData, 201);
+
+            } else {
+                DB::rollback();
+                $responseData['status'] = 201;
+                $responseData['message'] = 'This message is already read by you';
+                return $this->commonResponse($responseData, 201);
+            }
+
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            DB::rollback();
+            $catchError = 'Error code: '.$e->getCode().PHP_EOL;
+            $catchError .= 'Error file: '.$e->getFile().PHP_EOL;
+            $catchError .= 'Error line: '.$e->getLine().PHP_EOL;
+            $catchError .= 'Error message: '.$e->getMessage().PHP_EOL;
+            \Log::emergency($catchError);
+
+            $responseData['message'] = "Something went wrong";
+            return $this->commonResponse($responseData, 500);
+        }
+    }
 }

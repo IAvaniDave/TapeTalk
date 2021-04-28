@@ -76,6 +76,12 @@
     </head>
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+        <script type="text/javascript">
+          var NODE_SERVER_HOST = '{{ env("NODE_SERVER_HOST") }}';
+          var NODE_SERVER_PORT = '{{ env("NODE_SERVER_PORT") }}';
+          var SERVER_HOST_PREFIX = '{{ env("SERVER_HOST_PREFIX") }}';
+          var NODE_SERVER_APP = '{{ env("NODE_SERVER_APP") }}';
+        </script>
         <script type="text/javascript" src="{{ asset('js/testSocket.js') }}"></script>
         
         <div class="">

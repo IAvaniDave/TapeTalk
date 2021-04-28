@@ -1,3 +1,3 @@
 
 
-var socket=io('http://127.0.0.1:7000/');
+var socket=io(SERVER_HOST_PREFIX+NODE_SERVER_HOST+":"+NODE_SERVER_PORT+"/");

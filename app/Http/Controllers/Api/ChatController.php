@@ -373,7 +373,7 @@ class ChatController extends Controller
     }
 
     /**
-     * ark as reas
+     * 
      */
     public function markAsRead(Request $request){
         $responseData = array();

@@ -17,7 +17,7 @@ app.get('*', (req, res) => res.send('Socket is working. You requested the follow
 
 const dotenv = require('dotenv');
 dotenv.config();
-var hostname = '0.0.0.0';// process.env.NODE_SERVER_HOST;
+var hostname = 'tape-talk.com';// process.env.NODE_SERVER_HOST;
 var port = 7000;
 // var port = process.env.NODE_SERVER_PORT;
 var Redis = require('ioredis');
@@ -27,8 +27,9 @@ var redis = new Redis({
 });
 
 
-httpServer.listen(port, () => {
-    console.log('HTTP Server running on port' + port);
+httpServer.listen(port, hostname, () => {
+    // console.log('HTTP Server running on port' + port);
+    console.log(`Server running at http://${hostname}:${port}/`);
 });
 
 // redis.subscribe('chat-channel');

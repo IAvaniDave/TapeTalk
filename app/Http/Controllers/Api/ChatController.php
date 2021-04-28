@@ -214,22 +214,24 @@ class ChatController extends Controller
                     'message' => $message,
                     'message_id' => $messages->id,
                 ];
-                /**
-                 * socket emit
-                */
-                $socketDataCM = array(
-                    'event' => 'chatMessageAdd',
-                    'data' => (object)$chatMessageData,
-                );
                 
-                event(new ChatUsersEvent($socketDataCM));
-
                 $results = array();
                 $results['id'] = $messages->id;
                 $results['sender_id'] = $messages->sender_id;
                 $results['text'] = $messages->text;
                 $results['group_id'] = $messages->group_id;
                 $results['created_at'] = $messages->created_at;
+                
+                /**
+                 * socket emit
+                */
+                $socketDataCM = array(
+                    'event' => 'chatMessageAdd',
+                    'data' => (object)$results,
+                );
+                
+                event(new ChatUsersEvent($socketDataCM));
+
 
                 $responseData['data'] = (object)$results;
                 $responseData['status'] = 200;
@@ -397,9 +399,9 @@ class ChatController extends Controller
             ];
             
             $messageReceiver = MessageReceivers::where($where)->first();
-
+            // dd($messageReceiver);
             if(isset($messageReceiver) && !empty($messageReceiver)){
-                MessageReceivers::where('id',$messageReceiver->id)->update(['is_read' => 1]);
+                MessageReceivers::where('id','<=',$messageReceiver->id)->where('receiver_id',$receiver_id)->update(['is_read' => 1]);
                 DB::commit();
                 $responseData['status'] = 200;
                 $responseData['message'] = 'The count is updated';

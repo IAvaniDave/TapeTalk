@@ -17,7 +17,7 @@ app.get('*', (req, res) => res.send('Socket is working. You requested the follow
 
 const dotenv = require('dotenv');
 dotenv.config();
-var hostname = 'tape-talk.com';// process.env.NODE_SERVER_HOST;
+var hostname = '0.0.0.0';// process.env.NODE_SERVER_HOST;
 var port = 7000;
 // var port = process.env.NODE_SERVER_PORT;
 var Redis = require('ioredis');
@@ -28,11 +28,9 @@ var redis = new Redis({
 
 
 httpServer.listen(port, hostname, () => {
-    // console.log('HTTP Server running on port' + port);
     console.log(`Server running at http://${hostname}:${port}/`);
 });
 
-// redis.subscribe('chat-channel');
 redis.subscribe('chat-channel', function () {
     console.log('Redis: message-channel subscribed');
 });
@@ -59,26 +57,25 @@ io.on('connection', (socket) => {
             }
         })
         socket.on('speaking',(data) => {
-            // console.log("socket data typing",data);
             if (data.event == 'message-speaking') {
                 console.log("in if","chat-users-" + data.groupId);
-                // socket.join("message-typing-" + data.room);
                 socket.to("chat-users-" + data.groupId).emit('typing', data);
             }
-            //  else if(data.event == 'typing-stop'){
-            //     socket.to("chat-users-" + data.groupId).emit('typing', data);
-            // }
         })
         socket.on('typing',(data) => {
-            // console.log("socket data typing",data);
             if (data.event == 'message-typing') {
-                console.log("in if","chat-users-" + data.groupId);
-                // socket.join("message-typing-" + data.room);
                 socket.to("chat-users-" + data.groupId).emit('typing', data);
             }
-            //  else if(data.event == 'typing-stop'){
-            //     socket.to("chat-users-" + data.groupId).emit('typing', data);
-            // }
+        })
+        socket.on('typingStop',(data) => {
+            if(data.event == 'typing-stop'){
+                socket.to("chat-users-" + data.groupId).emit('typingStop', data);
+            }
+        })
+        socket.on('speakingStop',(data) => {
+            if(data.event == 'speaking-stop'){
+                socket.to("chat-users-" + data.groupId).emit('speakingStop', data);
+            }
         })
     } catch (e) {
         console.log('[error]', 'join room :', e);

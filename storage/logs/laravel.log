@@ -1,0 +1,18 @@
+[2021-04-28 15:06:38] local.INFO: userLoginSuccessResponse ::Array
+(
+    [fcm_token] => 
+    [device_type] => 1
+)
+  
+[2021-04-28 15:08:13] local.INFO: ApiAccessible access middlewhere token:: uVut20TJYhWyVm87NvuVPqviSbYyXMJwUEslk3ZamXkxgUsFZVrUWMTgi15e  
+[2021-04-28 15:08:13] local.INFO: API Request: {"group_id":"1","message_id":"1"}  
+[2021-04-28 15:10:31] local.INFO: ApiAccessible access middlewhere token:: uVut20TJYhWyVm87NvuVPqviSbYyXMJwUEslk3ZamXkxgUsFZVrUWMTgi15e  
+[2021-04-28 15:10:31] local.INFO: API Request: {"group_id":"1","message_id":"3"}  
+[2021-04-28 15:10:42] local.INFO: ApiAccessible access middlewhere token:: uVut20TJYhWyVm87NvuVPqviSbYyXMJwUEslk3ZamXkxgUsFZVrUWMTgi15e  
+[2021-04-28 15:10:42] local.INFO: API Request: {"group_id":"1","message_id":"3"}  
+[2021-04-28 15:12:20] local.INFO: ApiAccessible access middlewhere token:: uVut20TJYhWyVm87NvuVPqviSbYyXMJwUEslk3ZamXkxgUsFZVrUWMTgi15e  
+[2021-04-28 15:12:20] local.INFO: API Request: {"group_id":"1","message_id":"9"}  
+[2021-04-28 15:13:01] local.INFO: ApiAccessible access middlewhere token:: uVut20TJYhWyVm87NvuVPqviSbYyXMJwUEslk3ZamXkxgUsFZVrUWMTgi15e  
+[2021-04-28 15:13:01] local.INFO: API Request: {"group_id":"1","message_id":"9"}  
+[2021-04-28 15:13:18] local.INFO: ApiAccessible access middlewhere token:: uVut20TJYhWyVm87NvuVPqviSbYyXMJwUEslk3ZamXkxgUsFZVrUWMTgi15e  
+[2021-04-28 15:13:18] local.INFO: API Request: {"group_id":"1","message_id":"9"}  

@@ -1036,3 +1036,15 @@
 [2021-04-29 15:13:59] local.INFO: API Request: {"is_existing":"0","group_name":"Testinggggg11122223334","members":"2,3,1"}  
 [2021-04-29 15:16:28] local.INFO: ApiAccessible access middlewhere token:: f0rCrRKgit14qkTV1oWCEaSlAV2ao4KxfNVKQpa1UzNdxak0K0ZAVptRTdXX  
 [2021-04-29 15:16:28] local.INFO: API Request: {"is_existing":"0","group_name":"Testinggggg111222233345","members":"2,3,1"}  
+[2021-04-29 15:30:34] local.INFO: ApiAccessible access middlewhere token:: uVut20TJYhWyVm87NvuVPqviSbYyXMJwUEslk3ZamXkxgUsFZVrUWMTgi15e  
+[2021-04-29 15:30:34] local.INFO: API Request: {"group_id":"1","message_id":"9"}  
+[2021-04-29 15:31:04] local.INFO: ApiAccessible access middlewhere token:: uVut20TJYhWyVm87NvuVPqviSbYyXMJwUEslk3ZamXkxgUsFZVrUWMTgi15e  
+[2021-04-29 15:31:04] local.INFO: API Request: {"group_id":"10","message_id":"9"}  
+[2021-04-29 15:31:14] local.INFO: userLoginSuccessResponse ::Array
+(
+    [fcm_token] => 
+    [device_type] => 1
+)
+  
+[2021-04-29 15:31:26] local.INFO: ApiAccessible access middlewhere token:: qC1pLJIVLGWm6jZ0shxKpyakGkyVtskMYi5ePWy4rTHg1j6VuzTIQ8KCAZBd  
+[2021-04-29 15:31:26] local.INFO: API Request: {"group_id":"10","message_id":"9"}  

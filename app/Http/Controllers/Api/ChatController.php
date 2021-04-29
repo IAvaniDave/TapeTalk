@@ -195,7 +195,7 @@ class ChatController extends Controller
                 $messageReceiversData = [];
                 if($allReceivers != null){
                     foreach ($allReceivers as $receiver) {
-                        $messageReceiversData[] = ['receiver_id' => $receiver, 'group_id' => $chatGroupId, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s'),'is_read' => 0, 'message_id' => $messages->id ];
+                        $messageReceiversData[] = ['receiver_id' => $receiver, 'group_id' => $chatGroupId, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s'),'is_read' => ($receiver == $currentUser->id) ? 1 : 0, 'message_id' => $messages->id ];
                     }
                     MessageReceivers::insert($messageReceiversData);
                 }
@@ -398,23 +398,30 @@ class ChatController extends Controller
             $where = [
                 'group_id' => $group_id,
                 'receiver_id' => $receiver_id,
-                'message_id' => $message_id,
-                'is_read' => 0
+                'message_id' => $message_id
+                // 'is_read' => 0
             ];
             
             $messageReceiver = MessageReceivers::where($where)->first();
             // dd($messageReceiver);
             if(isset($messageReceiver) && !empty($messageReceiver)){
-                MessageReceivers::where('id','<=',$messageReceiver->id)->where('receiver_id',$receiver_id)->update(['is_read' => 1]);
-                DB::commit();
-                $responseData['status'] = 200;
-                $responseData['message'] = 'The count is updated';
-                return $this->commonResponse($responseData, 201);
+                if($messageReceiver->is_read == 0){
+                    MessageReceivers::where('id','<=',$messageReceiver->id)->where('receiver_id',$receiver_id)->update(['is_read' => 1]);
+                    DB::commit();
+                    $responseData['status'] = 200;
+                    $responseData['message'] = 'The count is updated';
+                    return $this->commonResponse($responseData, 201);
+                } else {
+                    DB::rollback();
+                    $responseData['status'] = 201;
+                    $responseData['message'] = 'This message is already read by you';
+                    return $this->commonResponse($responseData, 201);
+                }
 
             } else {
                 DB::rollback();
                 $responseData['status'] = 201;
-                $responseData['message'] = 'This message is already read by you';
+                $responseData['message'] = 'Entered details are not associated with you, Please check your details';
                 return $this->commonResponse($responseData, 201);
             }
 

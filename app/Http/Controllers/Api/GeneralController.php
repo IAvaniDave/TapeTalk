@@ -267,9 +267,16 @@ class GeneralController extends Controller
     
                                     $finalData = ChatGroup::where('id',$addGroup->id)->where('deleted_at',NULL)->where('is_single',2)->with(['chatmembers' => function($query){
                                         $query->where('deleted_at',NULL)->select('id',"group_id","user_id")->with('user:id,username,email');
-                                    }])->whereHas('chatmembers',function($query){
+                                    }])
+                                    ->whereHas('chatmembers',function($query){
                                         $query->where('deleted_at',NULL);
-                                    })->first();
+                                    })
+                                    ->first();
+
+                                    $finalData['chat_members'] = $finalData['chatmembers'];
+                                    unset($finalData['chatmembers']);
+                                    // dd($finalData);
+
                                     $responseData['message'] = "Group Added Successfully"; 
                                     $responseData['status'] = 200;
                                     $responseData['data'] = $finalData;

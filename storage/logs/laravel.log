@@ -16,3 +16,997 @@
 [2021-04-28 15:13:01] local.INFO: API Request: {"group_id":"1","message_id":"9"}  
 [2021-04-28 15:13:18] local.INFO: ApiAccessible access middlewhere token:: uVut20TJYhWyVm87NvuVPqviSbYyXMJwUEslk3ZamXkxgUsFZVrUWMTgi15e  
 [2021-04-28 15:13:18] local.INFO: API Request: {"group_id":"1","message_id":"9"}  
+[2021-04-29 08:14:04] local.INFO: userLoginSuccessResponse ::Array
+(
+    [fcm_token] => 
+    [device_type] => 1
+)
+  
+[2021-04-29 08:14:22] local.INFO: ApiAccessible access middlewhere token:: bTM60U24iRtRBSiQJJWOCW3yPZ12r1XZ2UOvHmQV5tN7HZkKV3dZwgWP5D6J  
+[2021-04-29 08:14:22] local.INFO: API Request: {"group_id":"1","page_":"1","limit":"5"}  
+[2021-04-29 08:14:42] local.INFO: ApiAccessible access middlewhere token:: bTM60U24iRtRBSiQJJWOCW3yPZ12r1XZ2UOvHmQV5tN7HZkKV3dZwgWP5D6J  
+[2021-04-29 08:14:42] local.INFO: API Request: {"current_password":"12121212","new_password":"12121212"}  
+[2021-04-29 08:15:01] local.INFO: ApiAccessible access middlewhere token:: bTM60U24iRtRBSiQJJWOCW3yPZ12r1XZ2UOvHmQV5tN7HZkKV3dZwgWP5D6J  
+[2021-04-29 08:15:01] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
+[2021-04-29 08:15:02] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'id' => 55,
+     'sender_id' => 2,
+     'text' => '"hiii"',
+     'group_id' => 1,
+     'created_at' => 
+    Illuminate\Support\Carbon::__set_state(array(
+       'constructedObjectId' => '000000004da409d200000000277ef9db',
+       'localMonthsOverflow' => NULL,
+       'localYearsOverflow' => NULL,
+       'localStrictModeEnabled' => NULL,
+       'localHumanDiffOptions' => NULL,
+       'localToStringFormat' => NULL,
+       'localSerializer' => NULL,
+       'localMacros' => NULL,
+       'localGenericMacros' => NULL,
+       'localFormatFunction' => NULL,
+       'localTranslator' => NULL,
+       'dumpProperties' => 
+      array (
+        0 => 'date',
+        1 => 'timezone_type',
+        2 => 'timezone',
+      ),
+       'dumpLocale' => NULL,
+       'date' => '2021-04-29 08:15:01.000000',
+       'timezone_type' => 3,
+       'timezone' => 'UTC',
+    )),
+  )),
+)  
+[2021-04-29 08:15:02] local.INFO: broadcastWith  
+[2021-04-29 08:15:02] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'id' => 55,
+     'sender_id' => 2,
+     'text' => '"hiii"',
+     'group_id' => 1,
+     'created_at' => 
+    Illuminate\Support\Carbon::__set_state(array(
+       'constructedObjectId' => '000000004da409d200000000277ef9db',
+       'localMonthsOverflow' => NULL,
+       'localYearsOverflow' => NULL,
+       'localStrictModeEnabled' => NULL,
+       'localHumanDiffOptions' => NULL,
+       'localToStringFormat' => NULL,
+       'localSerializer' => NULL,
+       'localMacros' => NULL,
+       'localGenericMacros' => NULL,
+       'localFormatFunction' => NULL,
+       'localTranslator' => NULL,
+       'dumpProperties' => 
+      array (
+        0 => 'date',
+        1 => 'timezone_type',
+        2 => 'timezone',
+      ),
+       'dumpLocale' => NULL,
+       'date' => '2021-04-29 08:15:01.000000',
+       'timezone_type' => 3,
+       'timezone' => 'UTC',
+    )),
+  )),
+)  
+[2021-04-29 08:15:03] local.INFO: listenderrrr  
+[2021-04-29 08:18:50] local.INFO: ApiAccessible access middlewhere token:: bTM60U24iRtRBSiQJJWOCW3yPZ12r1XZ2UOvHmQV5tN7HZkKV3dZwgWP5D6J  
+[2021-04-29 08:18:50] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
+[2021-04-29 08:18:50] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'id' => 56,
+     'sender_id' => 2,
+     'text' => '"hiii"',
+     'group_id' => 1,
+     'created_at' => 
+    Illuminate\Support\Carbon::__set_state(array(
+       'constructedObjectId' => '0000000039e118410000000033add784',
+       'localMonthsOverflow' => NULL,
+       'localYearsOverflow' => NULL,
+       'localStrictModeEnabled' => NULL,
+       'localHumanDiffOptions' => NULL,
+       'localToStringFormat' => NULL,
+       'localSerializer' => NULL,
+       'localMacros' => NULL,
+       'localGenericMacros' => NULL,
+       'localFormatFunction' => NULL,
+       'localTranslator' => NULL,
+       'dumpProperties' => 
+      array (
+        0 => 'date',
+        1 => 'timezone_type',
+        2 => 'timezone',
+      ),
+       'dumpLocale' => NULL,
+       'date' => '2021-04-29 08:18:50.000000',
+       'timezone_type' => 3,
+       'timezone' => 'UTC',
+    )),
+  )),
+)  
+[2021-04-29 08:18:50] local.INFO: broadcastWith  
+[2021-04-29 08:18:50] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'id' => 56,
+     'sender_id' => 2,
+     'text' => '"hiii"',
+     'group_id' => 1,
+     'created_at' => 
+    Illuminate\Support\Carbon::__set_state(array(
+       'constructedObjectId' => '0000000039e118410000000033add784',
+       'localMonthsOverflow' => NULL,
+       'localYearsOverflow' => NULL,
+       'localStrictModeEnabled' => NULL,
+       'localHumanDiffOptions' => NULL,
+       'localToStringFormat' => NULL,
+       'localSerializer' => NULL,
+       'localMacros' => NULL,
+       'localGenericMacros' => NULL,
+       'localFormatFunction' => NULL,
+       'localTranslator' => NULL,
+       'dumpProperties' => 
+      array (
+        0 => 'date',
+        1 => 'timezone_type',
+        2 => 'timezone',
+      ),
+       'dumpLocale' => NULL,
+       'date' => '2021-04-29 08:18:50.000000',
+       'timezone_type' => 3,
+       'timezone' => 'UTC',
+    )),
+  )),
+)  
+[2021-04-29 08:18:50] local.INFO: listenderrrr  
+[2021-04-29 08:20:05] local.INFO: ApiAccessible access middlewhere token:: bTM60U24iRtRBSiQJJWOCW3yPZ12r1XZ2UOvHmQV5tN7HZkKV3dZwgWP5D6J  
+[2021-04-29 08:20:05] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
+[2021-04-29 08:20:05] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'id' => 57,
+     'sender_id' => 2,
+     'text' => '"hiii"',
+     'group_id' => 1,
+     'created_at' => 
+    Illuminate\Support\Carbon::__set_state(array(
+       'constructedObjectId' => '000000003c255515000000000ac2441f',
+       'localMonthsOverflow' => NULL,
+       'localYearsOverflow' => NULL,
+       'localStrictModeEnabled' => NULL,
+       'localHumanDiffOptions' => NULL,
+       'localToStringFormat' => NULL,
+       'localSerializer' => NULL,
+       'localMacros' => NULL,
+       'localGenericMacros' => NULL,
+       'localFormatFunction' => NULL,
+       'localTranslator' => NULL,
+       'dumpProperties' => 
+      array (
+        0 => 'date',
+        1 => 'timezone_type',
+        2 => 'timezone',
+      ),
+       'dumpLocale' => NULL,
+       'date' => '2021-04-29 08:20:05.000000',
+       'timezone_type' => 3,
+       'timezone' => 'UTC',
+    )),
+     'user' => 
+    App\User::__set_state(array(
+       'guarded' => 
+      array (
+      ),
+       'apiOnlyField' => 
+      array (
+        0 => 'id',
+        1 => 'username',
+        2 => 'email',
+        3 => 'logo',
+        4 => 'ip_address',
+        5 => 'status',
+        6 => 'birth_date',
+        7 => 'gender',
+        8 => 'password',
+        9 => 'api_token',
+      ),
+       'hidden' => 
+      array (
+        0 => 'password',
+        1 => 'remember_token',
+      ),
+       'casts' => 
+      array (
+        'email_verified_at' => 'datetime',
+      ),
+       'connection' => 'mysql',
+       'table' => 'users',
+       'primaryKey' => 'id',
+       'keyType' => 'int',
+       'incrementing' => true,
+       'with' => 
+      array (
+      ),
+       'withCount' => 
+      array (
+      ),
+       'perPage' => 15,
+       'exists' => true,
+       'wasRecentlyCreated' => false,
+       'attributes' => 
+      array (
+        'id' => 2,
+        'username' => 'Avani Dave',
+        'status' => 1,
+        'email' => 'avani.dave.123@yopmail.com',
+        'deleted_at' => NULL,
+        'logo' => 'logo_6079aae11a8955.638540551618586337.jpg',
+      ),
+       'original' => 
+      array (
+        'id' => 2,
+        'username' => 'Avani Dave',
+        'status' => 1,
+        'email' => 'avani.dave.123@yopmail.com',
+        'deleted_at' => NULL,
+        'logo' => 'logo_6079aae11a8955.638540551618586337.jpg',
+      ),
+       'changes' => 
+      array (
+      ),
+       'classCastCache' => 
+      array (
+      ),
+       'dates' => 
+      array (
+        0 => 'deleted_at',
+      ),
+       'dateFormat' => NULL,
+       'appends' => 
+      array (
+      ),
+       'dispatchesEvents' => 
+      array (
+      ),
+       'observables' => 
+      array (
+      ),
+       'relations' => 
+      array (
+      ),
+       'touches' => 
+      array (
+      ),
+       'timestamps' => true,
+       'visible' => 
+      array (
+      ),
+       'fillable' => 
+      array (
+      ),
+       'rememberTokenName' => 'remember_token',
+       'forceDeleting' => false,
+    )),
+     'group' => 
+    App\Models\ChatGroup::__set_state(array(
+       'table' => 'chat_groups',
+       'user' => 'fghfh',
+       'guarded' => 
+      array (
+      ),
+       'connection' => 'mysql',
+       'primaryKey' => 'id',
+       'keyType' => 'int',
+       'incrementing' => true,
+       'with' => 
+      array (
+      ),
+       'withCount' => 
+      array (
+      ),
+       'perPage' => 15,
+       'exists' => true,
+       'wasRecentlyCreated' => false,
+       'attributes' => 
+      array (
+        'id' => 1,
+        'group_name' => 'NULL',
+        'group_image' => 'NULL',
+        'is_single' => 1,
+        'created_by' => 1,
+        'last_updated' => '2021-04-29 08:20:05',
+        'created_at' => '2021-04-11 11:49:25',
+        'updated_at' => '2021-04-29 08:20:05',
+        'deleted_at' => NULL,
+      ),
+       'original' => 
+      array (
+        'id' => 1,
+        'group_name' => 'NULL',
+        'group_image' => 'NULL',
+        'is_single' => 1,
+        'created_by' => 1,
+        'last_updated' => '2021-04-29 08:20:05',
+        'created_at' => '2021-04-11 11:49:25',
+        'updated_at' => '2021-04-29 08:20:05',
+        'deleted_at' => NULL,
+      ),
+       'changes' => 
+      array (
+      ),
+       'casts' => 
+      array (
+      ),
+       'classCastCache' => 
+      array (
+      ),
+       'dates' => 
+      array (
+        0 => 'deleted_at',
+      ),
+       'dateFormat' => NULL,
+       'appends' => 
+      array (
+      ),
+       'dispatchesEvents' => 
+      array (
+      ),
+       'observables' => 
+      array (
+      ),
+       'relations' => 
+      array (
+      ),
+       'touches' => 
+      array (
+      ),
+       'timestamps' => true,
+       'hidden' => 
+      array (
+      ),
+       'visible' => 
+      array (
+      ),
+       'fillable' => 
+      array (
+      ),
+       'forceDeleting' => false,
+    )),
+  )),
+)  
+[2021-04-29 08:20:05] local.INFO: broadcastWith  
+[2021-04-29 08:20:05] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'id' => 57,
+     'sender_id' => 2,
+     'text' => '"hiii"',
+     'group_id' => 1,
+     'created_at' => 
+    Illuminate\Support\Carbon::__set_state(array(
+       'constructedObjectId' => '000000003c255515000000000ac2441f',
+       'localMonthsOverflow' => NULL,
+       'localYearsOverflow' => NULL,
+       'localStrictModeEnabled' => NULL,
+       'localHumanDiffOptions' => NULL,
+       'localToStringFormat' => NULL,
+       'localSerializer' => NULL,
+       'localMacros' => NULL,
+       'localGenericMacros' => NULL,
+       'localFormatFunction' => NULL,
+       'localTranslator' => NULL,
+       'dumpProperties' => 
+      array (
+        0 => 'date',
+        1 => 'timezone_type',
+        2 => 'timezone',
+      ),
+       'dumpLocale' => NULL,
+       'date' => '2021-04-29 08:20:05.000000',
+       'timezone_type' => 3,
+       'timezone' => 'UTC',
+    )),
+     'user' => 
+    App\User::__set_state(array(
+       'guarded' => 
+      array (
+      ),
+       'apiOnlyField' => 
+      array (
+        0 => 'id',
+        1 => 'username',
+        2 => 'email',
+        3 => 'logo',
+        4 => 'ip_address',
+        5 => 'status',
+        6 => 'birth_date',
+        7 => 'gender',
+        8 => 'password',
+        9 => 'api_token',
+      ),
+       'hidden' => 
+      array (
+        0 => 'password',
+        1 => 'remember_token',
+      ),
+       'casts' => 
+      array (
+        'email_verified_at' => 'datetime',
+      ),
+       'connection' => 'mysql',
+       'table' => 'users',
+       'primaryKey' => 'id',
+       'keyType' => 'int',
+       'incrementing' => true,
+       'with' => 
+      array (
+      ),
+       'withCount' => 
+      array (
+      ),
+       'perPage' => 15,
+       'exists' => true,
+       'wasRecentlyCreated' => false,
+       'attributes' => 
+      array (
+        'id' => 2,
+        'username' => 'Avani Dave',
+        'status' => 1,
+        'email' => 'avani.dave.123@yopmail.com',
+        'deleted_at' => NULL,
+        'logo' => 'logo_6079aae11a8955.638540551618586337.jpg',
+      ),
+       'original' => 
+      array (
+        'id' => 2,
+        'username' => 'Avani Dave',
+        'status' => 1,
+        'email' => 'avani.dave.123@yopmail.com',
+        'deleted_at' => NULL,
+        'logo' => 'logo_6079aae11a8955.638540551618586337.jpg',
+      ),
+       'changes' => 
+      array (
+      ),
+       'classCastCache' => 
+      array (
+      ),
+       'dates' => 
+      array (
+        0 => 'deleted_at',
+      ),
+       'dateFormat' => NULL,
+       'appends' => 
+      array (
+      ),
+       'dispatchesEvents' => 
+      array (
+      ),
+       'observables' => 
+      array (
+      ),
+       'relations' => 
+      array (
+      ),
+       'touches' => 
+      array (
+      ),
+       'timestamps' => true,
+       'visible' => 
+      array (
+      ),
+       'fillable' => 
+      array (
+      ),
+       'rememberTokenName' => 'remember_token',
+       'forceDeleting' => false,
+    )),
+     'group' => 
+    App\Models\ChatGroup::__set_state(array(
+       'table' => 'chat_groups',
+       'user' => 'fghfh',
+       'guarded' => 
+      array (
+      ),
+       'connection' => 'mysql',
+       'primaryKey' => 'id',
+       'keyType' => 'int',
+       'incrementing' => true,
+       'with' => 
+      array (
+      ),
+       'withCount' => 
+      array (
+      ),
+       'perPage' => 15,
+       'exists' => true,
+       'wasRecentlyCreated' => false,
+       'attributes' => 
+      array (
+        'id' => 1,
+        'group_name' => 'NULL',
+        'group_image' => 'NULL',
+        'is_single' => 1,
+        'created_by' => 1,
+        'last_updated' => '2021-04-29 08:20:05',
+        'created_at' => '2021-04-11 11:49:25',
+        'updated_at' => '2021-04-29 08:20:05',
+        'deleted_at' => NULL,
+      ),
+       'original' => 
+      array (
+        'id' => 1,
+        'group_name' => 'NULL',
+        'group_image' => 'NULL',
+        'is_single' => 1,
+        'created_by' => 1,
+        'last_updated' => '2021-04-29 08:20:05',
+        'created_at' => '2021-04-11 11:49:25',
+        'updated_at' => '2021-04-29 08:20:05',
+        'deleted_at' => NULL,
+      ),
+       'changes' => 
+      array (
+      ),
+       'casts' => 
+      array (
+      ),
+       'classCastCache' => 
+      array (
+      ),
+       'dates' => 
+      array (
+        0 => 'deleted_at',
+      ),
+       'dateFormat' => NULL,
+       'appends' => 
+      array (
+      ),
+       'dispatchesEvents' => 
+      array (
+      ),
+       'observables' => 
+      array (
+      ),
+       'relations' => 
+      array (
+      ),
+       'touches' => 
+      array (
+      ),
+       'timestamps' => true,
+       'hidden' => 
+      array (
+      ),
+       'visible' => 
+      array (
+      ),
+       'fillable' => 
+      array (
+      ),
+       'forceDeleting' => false,
+    )),
+  )),
+)  
+[2021-04-29 08:20:05] local.INFO: listenderrrr  
+[2021-04-29 08:21:09] local.INFO: ApiAccessible access middlewhere token:: bTM60U24iRtRBSiQJJWOCW3yPZ12r1XZ2UOvHmQV5tN7HZkKV3dZwgWP5D6J  
+[2021-04-29 08:21:09] local.INFO: API Request: {"new_user_id":"1","message":"\"hiii\"","device_type":"1","device_id":"1234"}  
+[2021-04-29 08:21:09] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'id' => 58,
+     'sender_id' => 2,
+     'text' => '"hiii"',
+     'group_id' => 1,
+     'created_at' => 
+    Illuminate\Support\Carbon::__set_state(array(
+       'constructedObjectId' => '000000002fc553b2000000000e479d35',
+       'localMonthsOverflow' => NULL,
+       'localYearsOverflow' => NULL,
+       'localStrictModeEnabled' => NULL,
+       'localHumanDiffOptions' => NULL,
+       'localToStringFormat' => NULL,
+       'localSerializer' => NULL,
+       'localMacros' => NULL,
+       'localGenericMacros' => NULL,
+       'localFormatFunction' => NULL,
+       'localTranslator' => NULL,
+       'dumpProperties' => 
+      array (
+        0 => 'date',
+        1 => 'timezone_type',
+        2 => 'timezone',
+      ),
+       'dumpLocale' => NULL,
+       'date' => '2021-04-29 08:21:09.000000',
+       'timezone_type' => 3,
+       'timezone' => 'UTC',
+    )),
+     'user' => 
+    App\User::__set_state(array(
+       'guarded' => 
+      array (
+      ),
+       'apiOnlyField' => 
+      array (
+        0 => 'id',
+        1 => 'username',
+        2 => 'email',
+        3 => 'logo',
+        4 => 'ip_address',
+        5 => 'status',
+        6 => 'birth_date',
+        7 => 'gender',
+        8 => 'password',
+        9 => 'api_token',
+      ),
+       'hidden' => 
+      array (
+        0 => 'password',
+        1 => 'remember_token',
+      ),
+       'casts' => 
+      array (
+        'email_verified_at' => 'datetime',
+      ),
+       'connection' => 'mysql',
+       'table' => 'users',
+       'primaryKey' => 'id',
+       'keyType' => 'int',
+       'incrementing' => true,
+       'with' => 
+      array (
+      ),
+       'withCount' => 
+      array (
+      ),
+       'perPage' => 15,
+       'exists' => true,
+       'wasRecentlyCreated' => false,
+       'attributes' => 
+      array (
+        'id' => 2,
+        'username' => 'Avani Dave',
+        'email' => 'avani.dave.123@yopmail.com',
+        'logo' => 'logo_6079aae11a8955.638540551618586337.jpg',
+        'status' => 1,
+        'deleted_at' => NULL,
+      ),
+       'original' => 
+      array (
+        'id' => 2,
+        'username' => 'Avani Dave',
+        'email' => 'avani.dave.123@yopmail.com',
+        'logo' => 'logo_6079aae11a8955.638540551618586337.jpg',
+        'status' => 1,
+        'deleted_at' => NULL,
+      ),
+       'changes' => 
+      array (
+      ),
+       'classCastCache' => 
+      array (
+      ),
+       'dates' => 
+      array (
+        0 => 'deleted_at',
+      ),
+       'dateFormat' => NULL,
+       'appends' => 
+      array (
+      ),
+       'dispatchesEvents' => 
+      array (
+      ),
+       'observables' => 
+      array (
+      ),
+       'relations' => 
+      array (
+      ),
+       'touches' => 
+      array (
+      ),
+       'timestamps' => true,
+       'visible' => 
+      array (
+      ),
+       'fillable' => 
+      array (
+      ),
+       'rememberTokenName' => 'remember_token',
+       'forceDeleting' => false,
+    )),
+     'group' => 
+    App\Models\ChatGroup::__set_state(array(
+       'table' => 'chat_groups',
+       'user' => 'fghfh',
+       'guarded' => 
+      array (
+      ),
+       'connection' => 'mysql',
+       'primaryKey' => 'id',
+       'keyType' => 'int',
+       'incrementing' => true,
+       'with' => 
+      array (
+      ),
+       'withCount' => 
+      array (
+      ),
+       'perPage' => 15,
+       'exists' => true,
+       'wasRecentlyCreated' => false,
+       'attributes' => 
+      array (
+        'id' => 1,
+        'group_name' => 'NULL',
+        'group_image' => 'NULL',
+      ),
+       'original' => 
+      array (
+        'id' => 1,
+        'group_name' => 'NULL',
+        'group_image' => 'NULL',
+      ),
+       'changes' => 
+      array (
+      ),
+       'casts' => 
+      array (
+      ),
+       'classCastCache' => 
+      array (
+      ),
+       'dates' => 
+      array (
+        0 => 'deleted_at',
+      ),
+       'dateFormat' => NULL,
+       'appends' => 
+      array (
+      ),
+       'dispatchesEvents' => 
+      array (
+      ),
+       'observables' => 
+      array (
+      ),
+       'relations' => 
+      array (
+      ),
+       'touches' => 
+      array (
+      ),
+       'timestamps' => true,
+       'hidden' => 
+      array (
+      ),
+       'visible' => 
+      array (
+      ),
+       'fillable' => 
+      array (
+      ),
+       'forceDeleting' => false,
+    )),
+  )),
+)  
+[2021-04-29 08:21:09] local.INFO: broadcastWith  
+[2021-04-29 08:21:09] local.INFO: array (
+  'event' => 'chatMessageAdd',
+  'data' => 
+  stdClass::__set_state(array(
+     'id' => 58,
+     'sender_id' => 2,
+     'text' => '"hiii"',
+     'group_id' => 1,
+     'created_at' => 
+    Illuminate\Support\Carbon::__set_state(array(
+       'constructedObjectId' => '000000002fc553b2000000000e479d35',
+       'localMonthsOverflow' => NULL,
+       'localYearsOverflow' => NULL,
+       'localStrictModeEnabled' => NULL,
+       'localHumanDiffOptions' => NULL,
+       'localToStringFormat' => NULL,
+       'localSerializer' => NULL,
+       'localMacros' => NULL,
+       'localGenericMacros' => NULL,
+       'localFormatFunction' => NULL,
+       'localTranslator' => NULL,
+       'dumpProperties' => 
+      array (
+        0 => 'date',
+        1 => 'timezone_type',
+        2 => 'timezone',
+      ),
+       'dumpLocale' => NULL,
+       'date' => '2021-04-29 08:21:09.000000',
+       'timezone_type' => 3,
+       'timezone' => 'UTC',
+    )),
+     'user' => 
+    App\User::__set_state(array(
+       'guarded' => 
+      array (
+      ),
+       'apiOnlyField' => 
+      array (
+        0 => 'id',
+        1 => 'username',
+        2 => 'email',
+        3 => 'logo',
+        4 => 'ip_address',
+        5 => 'status',
+        6 => 'birth_date',
+        7 => 'gender',
+        8 => 'password',
+        9 => 'api_token',
+      ),
+       'hidden' => 
+      array (
+        0 => 'password',
+        1 => 'remember_token',
+      ),
+       'casts' => 
+      array (
+        'email_verified_at' => 'datetime',
+      ),
+       'connection' => 'mysql',
+       'table' => 'users',
+       'primaryKey' => 'id',
+       'keyType' => 'int',
+       'incrementing' => true,
+       'with' => 
+      array (
+      ),
+       'withCount' => 
+      array (
+      ),
+       'perPage' => 15,
+       'exists' => true,
+       'wasRecentlyCreated' => false,
+       'attributes' => 
+      array (
+        'id' => 2,
+        'username' => 'Avani Dave',
+        'email' => 'avani.dave.123@yopmail.com',
+        'logo' => 'logo_6079aae11a8955.638540551618586337.jpg',
+        'status' => 1,
+        'deleted_at' => NULL,
+      ),
+       'original' => 
+      array (
+        'id' => 2,
+        'username' => 'Avani Dave',
+        'email' => 'avani.dave.123@yopmail.com',
+        'logo' => 'logo_6079aae11a8955.638540551618586337.jpg',
+        'status' => 1,
+        'deleted_at' => NULL,
+      ),
+       'changes' => 
+      array (
+      ),
+       'classCastCache' => 
+      array (
+      ),
+       'dates' => 
+      array (
+        0 => 'deleted_at',
+      ),
+       'dateFormat' => NULL,
+       'appends' => 
+      array (
+      ),
+       'dispatchesEvents' => 
+      array (
+      ),
+       'observables' => 
+      array (
+      ),
+       'relations' => 
+      array (
+      ),
+       'touches' => 
+      array (
+      ),
+       'timestamps' => true,
+       'visible' => 
+      array (
+      ),
+       'fillable' => 
+      array (
+      ),
+       'rememberTokenName' => 'remember_token',
+       'forceDeleting' => false,
+    )),
+     'group' => 
+    App\Models\ChatGroup::__set_state(array(
+       'table' => 'chat_groups',
+       'user' => 'fghfh',
+       'guarded' => 
+      array (
+      ),
+       'connection' => 'mysql',
+       'primaryKey' => 'id',
+       'keyType' => 'int',
+       'incrementing' => true,
+       'with' => 
+      array (
+      ),
+       'withCount' => 
+      array (
+      ),
+       'perPage' => 15,
+       'exists' => true,
+       'wasRecentlyCreated' => false,
+       'attributes' => 
+      array (
+        'id' => 1,
+        'group_name' => 'NULL',
+        'group_image' => 'NULL',
+      ),
+       'original' => 
+      array (
+        'id' => 1,
+        'group_name' => 'NULL',
+        'group_image' => 'NULL',
+      ),
+       'changes' => 
+      array (
+      ),
+       'casts' => 
+      array (
+      ),
+       'classCastCache' => 
+      array (
+      ),
+       'dates' => 
+      array (
+        0 => 'deleted_at',
+      ),
+       'dateFormat' => NULL,
+       'appends' => 
+      array (
+      ),
+       'dispatchesEvents' => 
+      array (
+      ),
+       'observables' => 
+      array (
+      ),
+       'relations' => 
+      array (
+      ),
+       'touches' => 
+      array (
+      ),
+       'timestamps' => true,
+       'hidden' => 
+      array (
+      ),
+       'visible' => 
+      array (
+      ),
+       'fillable' => 
+      array (
+      ),
+       'forceDeleting' => false,
+    )),
+  )),
+)  
+[2021-04-29 08:21:09] local.INFO: listenderrrr  

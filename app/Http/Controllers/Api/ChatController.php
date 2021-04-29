@@ -208,6 +208,8 @@ class ChatController extends Controller
                 * ChatUsersEvent is for, if one side user will send the message then other member will receive the message instantly.
                 */
 
+                $mesageDataObj = ChatMessage::select('id','sender_id','group_id','created_at','text')->where('id',$messages->id)->with(['user:id,username,email,logo,status,deleted_at','group:id,group_name,group_image'])->first();
+
                 $chatMessageData = [
                     'group_id' => $chatGroupId,
                     'user_id' => $currentUser->id,
@@ -221,6 +223,8 @@ class ChatController extends Controller
                 $results['text'] = $messages->text;
                 $results['group_id'] = $messages->group_id;
                 $results['created_at'] = $messages->created_at;
+                $results['user'] = $mesageDataObj->user;
+                $results['group'] = $mesageDataObj->group;
                 
                 /**
                  * socket emit

@@ -24,6 +24,17 @@
       0 => 'Fruitcake\\Cors\\CorsServiceProvider',
     ),
   ),
+  'ladumor/one-signal' => 
+  array (
+    'providers' => 
+    array (
+      0 => '\\Ladumor\\OneSignal\\OneSignalServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'OneSignal' => 'Ladumor\\OneSignal\\OneSignal',
+    ),
+  ),
   'laravel/tinker' => 
   array (
     'providers' => 

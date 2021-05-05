@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         \Laravel\Telescope\TelescopeServiceProvider::class,
+        Ladumor\OneSignal\OneSignalServiceProvider::class,
 
     ],
 
@@ -228,6 +229,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'OneSignal' => \Ladumor\OneSignal\OneSignal::class,
 
     ],
 

@@ -13,6 +13,7 @@ use App\Models\FirstHiMessage;
 use DB;
 use Validator;
 use App\Events\ChatUsersEvent;
+use Ladumor\OneSignal\OneSignal;
 
 class ChatController extends Controller
 {
@@ -225,6 +226,11 @@ class ChatController extends Controller
                 $results['created_at'] = $messages->created_at;
                 $results['user'] = $mesageDataObj->user;
                 $results['group'] = $mesageDataObj->group;
+
+                // notification setup
+                $fields['include_player_ids'] = $allReceivers;
+                $message = $messages->text;
+                OneSignal::sendPush($fields, $message);
                 
                 /**
                  * socket emit

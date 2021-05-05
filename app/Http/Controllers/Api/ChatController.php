@@ -13,6 +13,7 @@ use App\Models\FirstHiMessage;
 use DB;
 use Validator;
 use App\Events\ChatUsersEvent;
+use App\Models\DeviceToken;
 use Ladumor\OneSignal\OneSignal;
 
 class ChatController extends Controller
@@ -228,7 +229,14 @@ class ChatController extends Controller
                 $results['group'] = $mesageDataObj->group;
 
                 // notification setup
-                $fields['include_player_ids'] = $allReceivers;
+                $fields['include_player_ids'] = array();
+                foreach($allReceivers as $receiver){
+                    $device_id = DeviceToken::where('user_id',$receiver)->first();
+                    dd($device_id);
+                    array_push($fields['include_player_ids'],$device_id->device_id);
+                }
+                dd($fields);
+                dd($fields['include_player_ids']);
                 $message = $messages->text;
                 OneSignal::sendPush($fields, $message);
                 

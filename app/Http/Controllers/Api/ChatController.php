@@ -308,9 +308,9 @@ class ChatController extends Controller
                 })->whereHas('chatMembers.user',function($query1) use ($request){
                     $query1->where('username', 'like', "%".$request->keyword."%");
                 })
-                ->wherehas('unreadMessage' , function($query) use ($currentUser){
-                    $query->where('receiver_id',$currentUser->id);
-                })
+                // ->wherehas('unreadMessage' , function($query) use ($currentUser){
+                //     $query->where('receiver_id',$currentUser->id);
+                // })
                 ->where('deleted_at',null)
                 ->orderBy('last_updated','DESC')
                 ->get();

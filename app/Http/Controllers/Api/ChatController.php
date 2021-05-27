@@ -231,14 +231,17 @@ class ChatController extends Controller
                 // notification setup
                 $fields['include_player_ids'] = array();
                 foreach($allReceivers as $receiver){
-                    $device_id = DeviceToken::where('user_id',$receiver)->first();
-                    dd($device_id);
-                    array_push($fields['include_player_ids'],$device_id->device_id);
+                    if($receiver != $currentUser->id){
+                        $device_id = DeviceToken::where('user_id',$receiver)->first();
+                        if(!is_null($device_id)){
+                            array_push($fields['include_player_ids'],$device_id->device_id);
+                        }
+                    }
                 }
-                dd($fields);
-                dd($fields['include_player_ids']);
                 $message = $messages->text;
-                OneSignal::sendPush($fields, $message);
+                if(count($fields['include_player_ids']) > 0){
+                    OneSignal::sendPush($fields, $message);
+                }
                 
                 /**
                  * socket emit

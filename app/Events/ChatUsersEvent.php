@@ -23,7 +23,6 @@ class ChatUsersEvent implements ShouldBroadcastNow
      */
     public function __construct($data)
     {
-        \Log::info($data);
         $this->data = $data;
     }
 
@@ -44,8 +43,6 @@ class ChatUsersEvent implements ShouldBroadcastNow
     */
     public function broadcastWith()
     {
-        \Log::info("broadcastWith");
-        \Log::info($this->data);
         return $this->data;
     }
 }

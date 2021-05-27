@@ -26,7 +26,6 @@ class ChatUsersListener
      */
     public function handle(ChatUsersEvent $event)
     {
-        \Log::info("listenderrrr");
         return $event;
     }
 }

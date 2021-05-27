@@ -26,8 +26,7 @@ class ApiAccessible
     {
         try{
             $token = $request->bearerToken();
-            \Log::info('ApiAccessible access middlewhere token:: '. $token);
-            \Log::info('API Request: ' . print_r(json_encode($request->all()), true));
+            
             if($token && strlen($token) > 0){
                 $currentToken = DeviceToken::where(['api_token' => $token])->with('deviceToken:id,username,email,password,ip_address,status,logo,birth_date,gender')->first();
                 if($currentToken){

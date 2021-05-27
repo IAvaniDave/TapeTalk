@@ -153,7 +153,6 @@ class UserController extends Controller
                         DB::commit();
                         return $this->userLoginSuccessResponse($user, $request);
                     }else{
-                        \Log::info('5');
                         $responseData['message'] = "Auhentication failed";
                         return $this->commonResponse($responseData, 200);
                     }

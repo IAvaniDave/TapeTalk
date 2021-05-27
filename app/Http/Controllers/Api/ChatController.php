@@ -239,9 +239,9 @@ class ChatController extends Controller
                     }
                 }
                 $message = $messages->text;
-                // if(count($fields['include_player_ids']) > 0){
-                //     OneSignal::sendPush($fields, $message);
-                // }
+                if(count($fields['include_player_ids']) > 0){
+                    OneSignal::sendPush($fields, $message);
+                }
                 
                 /**
                  * socket emit
